@@ -18,10 +18,10 @@ All colors MUST be HSL.
     --popover: 0 0% 7%;
     --popover-foreground: 0 0% 95%;
 
-    /* Primary - Vibrant Orange */
-    --primary: 16 100% 60%;
+    /* Primary - Complexo Fitness Green */
+    --primary: 108 83% 43%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 16 100% 70%;
+    --primary-glow: 108 83% 53%;
 
     /* Secondary - Dark accent */
     --secondary: 0 0% 12%;
@@ -30,7 +30,7 @@ All colors MUST be HSL.
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 70%;
 
-    --accent: 8 90% 55%;
+    --accent: 108 83% 43%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -38,15 +38,15 @@ All colors MUST be HSL.
 
     --border: 0 0% 18%;
     --input: 0 0% 12%;
-    --ring: 16 100% 60%;
+    --ring: 108 83% 43%;
 
     --radius: 0.75rem;
 
     /* Custom fitness theme variables */
-    --hero-gradient: linear-gradient(135deg, hsl(16 100% 60%), hsl(8 90% 55%));
+    --hero-gradient: linear-gradient(135deg, hsl(108 83% 43%), hsl(108 83% 53%));
     --card-gradient: linear-gradient(145deg, hsl(0 0% 7%), hsl(0 0% 10%));
-    --glow-shadow: 0 0 30px hsl(16 100% 60% / 0.3);
-    --hero-shadow: 0 20px 60px hsl(16 100% 60% / 0.4);
+    --glow-shadow: 0 0 30px hsl(108 83% 43% / 0.3);
+    --hero-shadow: 0 20px 60px hsl(108 83% 43% / 0.4);
     
     /* Animation variables */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -195,9 +195,9 @@ All colors MUST be HSL.
 
 @keyframes pulse-glow {
   0%, 100% { 
-    box-shadow: 0 0 20px hsl(16 100% 60% / 0.3);
+    box-shadow: 0 0 20px hsl(108 83% 43% / 0.3);
   }
   50% { 
-    box-shadow: 0 0 40px hsl(16 100% 60% / 0.6);
+    box-shadow: 0 0 40px hsl(108 83% 43% / 0.6);
   }
 }

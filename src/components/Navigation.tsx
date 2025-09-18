@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Dumbbell } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import logoComplexo from "@/assets/logo-complexo-fitness.png";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,13 +44,11 @@ const Navigation = () => {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <div className="hero-gradient p-2 rounded-lg">
-              <Dumbbell className="h-8 w-8 text-primary-foreground" />
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-foreground">Complexo Fitness</h1>
-              <p className="text-xs text-muted-foreground">Ubajara</p>
-            </div>
+            <img 
+              src={logoComplexo} 
+              alt="Complexo Fitness Ubajara" 
+              className="h-10 w-auto"
+            />
           </div>
 
           {/* Desktop Navigation */}
