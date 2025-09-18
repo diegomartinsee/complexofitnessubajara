@@ -5,32 +5,6 @@ import { Check, Star } from "lucide-react";
 const Plans = () => {
   const plans = [
     {
-      name: "Diária",
-      price: "R$ 20",
-      period: "/dia",
-      description: "Perfeito para experimentar nossa estrutura",
-      features: [
-        "Acesso completo à musculação",
-        "Equipamentos de última geração", 
-        "Ambiente climatizado",
-        "Sem compromisso mensal"
-      ],
-      popular: false
-    },
-    {
-      name: "Semanal", 
-      price: "R$ 50",
-      period: "/semana",
-      description: "Ideal para visitantes ou teste prolongado",
-      features: [
-        "Acesso completo à academia",
-        "7 dias corridos de acesso",
-        "Horário flexível 24h",
-        "Área de musculação e cardio"
-      ],
-      popular: false
-    },
-    {
       name: "Mensal Horário Fixo",
       price: "R$ 110",
       period: "/mês", 
@@ -155,6 +129,14 @@ const Plans = () => {
         </div>
 
         <div className="text-center mt-12">
+          <div className="mb-6">
+            <h3 className="text-xl font-semibold mb-4">Também aceitamos:</h3>
+            <div className="flex justify-center items-center gap-8 flex-wrap">
+              <div className="text-primary font-semibold text-lg">TotalPass</div>
+              <div className="text-primary font-semibold text-lg">Wellhub</div>
+            </div>
+          </div>
+          
           <p className="text-muted-foreground mb-4">
             Não tem certeza qual plano escolher?
           </p>
