@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Dumbbell, Heart, Users, Timer } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Dumbbell, Heart, Users, Timer, Activity, Stethoscope, Apple, ShoppingBag } from "lucide-react";
 import weightsImage from "@/assets/weights.jpg";
 import cardioImage from "@/assets/cardio.jpg";
 import personalTrainingImage from "@/assets/personal-training.jpg";
@@ -9,23 +10,38 @@ const Services = () => {
     {
       icon: <Dumbbell className="h-12 w-12 text-primary" />,
       title: "Musculação",
-      description: "Equipamentos de última geração para todos os níveis de treino",
+      description: "Nosso serviço principal! Equipamentos de última geração para todos os níveis",
       image: weightsImage,
-      features: ["Aparelhos Life Fitness", "Pesos livres completos", "Área de funcional"]
+      isPrimary: true,
+      features: ["Aparelhos Life Fitness", "Pesos livres completos", "Área funcional", "Horários flexíveis"]
     },
     {
-      icon: <Heart className="h-12 w-12 text-primary" />,
-      title: "Cardio",
-      description: "Zona cardiovascular completa para queimar calorias",
-      image: cardioImage,
-      features: ["Esteiras modernas", "Bikes ergométricas", "Elípticos"]
-    },
-    {
-      icon: <Users className="h-12 w-12 text-primary" />,
-      title: "Aulas em Grupo",
-      description: "Modalidades variadas para todos os gostos",
+      icon: <Activity className="h-12 w-12 text-primary" />,
+      title: "Pilates",
+      description: "Fortalecimento do core e melhoria da postura com exercícios controlados",
       image: personalTrainingImage,
-      features: ["Zumba", "Spinning", "Pilates", "Crossfit"]
+      features: ["Exercícios funcionais", "Melhoria da postura", "Fortalecimento do core", "Aulas personalizadas"]
+    },
+    {
+      icon: <Stethoscope className="h-12 w-12 text-primary" />,
+      title: "Fisioterapia",
+      description: "Reabilitação e prevenção de lesões com profissionais especializados",
+      image: cardioImage,
+      features: ["Reabilitação", "Prevenção de lesões", "Avaliação postural", "Tratamento especializado"]
+    },
+    {
+      icon: <Apple className="h-12 w-12 text-primary" />,
+      title: "Nutrição",
+      description: "Orientação nutricional personalizada para potencializar seus resultados",
+      image: weightsImage,
+      features: ["Avaliação nutricional", "Planos alimentares", "Acompanhamento contínuo", "Orientação especializada"]
+    },
+    {
+      icon: <ShoppingBag className="h-12 w-12 text-primary" />,
+      title: "Fitstore",
+      description: "Nossa loja com suplementos e acessórios fitness de qualidade",
+      image: personalTrainingImage,
+      features: ["Suplementos premium", "Acessórios fitness", "Preços especiais", "Produtos selecionados"]
     }
   ];
 
@@ -43,7 +59,15 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="card-gradient border-border hover:glow-effect transition-smooth group">
+            <Card key={index} className={`card-gradient border-border hover:glow-effect transition-smooth group relative ${
+              service.isPrimary ? 'lg:col-span-2 ring-2 ring-primary/30' : ''
+            }`}>
+              {service.isPrimary && (
+                <Badge className="absolute top-4 right-4 z-10 hero-gradient text-primary-foreground">
+                  Serviço Principal
+                </Badge>
+              )}
+              
               <div className="relative overflow-hidden rounded-t-lg">
                 <img 
                   src={service.image} 
@@ -56,7 +80,9 @@ const Services = () => {
               </div>
               
               <CardHeader>
-                <CardTitle className="text-xl text-foreground">{service.title}</CardTitle>
+                <CardTitle className={`text-xl text-foreground ${service.isPrimary ? 'text-2xl' : ''}`}>
+                  {service.title}
+                </CardTitle>
                 <CardDescription className="text-muted-foreground">
                   {service.description}
                 </CardDescription>
