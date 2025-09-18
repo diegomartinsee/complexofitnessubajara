@@ -5,47 +5,83 @@ import { Check, Star } from "lucide-react";
 const Plans = () => {
   const plans = [
     {
-      name: "Mensal",
-      price: "R$ 89",
-      period: "/mês",
-      description: "Perfeito para começar sua jornada fitness",
+      name: "Diária",
+      price: "R$ 20",
+      period: "/dia",
+      description: "Perfeito para experimentar nossa estrutura",
       features: [
-        "Acesso completo à academia",
-        "Horário: 24h",
-        "Área de musculação",
-        "Área de cardio",
-        "1 avaliação física gratuita"
+        "Acesso completo à musculação",
+        "Equipamentos de última geração", 
+        "Ambiente climatizado",
+        "Sem compromisso mensal"
       ],
       popular: false
     },
     {
-      name: "Trimestral",
-      price: "R$ 69",
-      period: "/mês",
-      description: "Nosso plano mais popular com melhor custo-benefício",
+      name: "Semanal", 
+      price: "R$ 50",
+      period: "/semana",
+      description: "Ideal para visitantes ou teste prolongado",
       features: [
-        "Tudo do plano mensal",
-        "3 avaliações físicas",
-        "Acesso às aulas em grupo",
-        "Desconto em suplementos",
-        "App exclusivo de treinos",
-        "Suporte nutricional básico"
+        "Acesso completo à academia",
+        "7 dias corridos de acesso",
+        "Horário flexível 24h",
+        "Área de musculação e cardio"
+      ],
+      popular: false
+    },
+    {
+      name: "Mensal Horário Fixo",
+      price: "R$ 110",
+      period: "/mês", 
+      description: "Economia para quem tem rotina definida",
+      features: [
+        "Entrada entre 9h e 14h",
+        "Permanência livre após entrada",
+        "Acesso completo à musculação",
+        "Taxa R$10 para horário extra"
+      ],
+      popular: false
+    },
+    {
+      name: "Trimestral Standard",
+      price: "R$ 123,40",
+      period: "/mês",
+      description: "Nosso plano mais popular com flexibilidade total",
+      features: [
+        "Acesso livre 24h",
+        "Parcelamento em até 3x",
+        "Valor total: R$ 370,20",
+        "Flexibilidade de horários",
+        "Equipamentos completos"
       ],
       popular: true
     },
     {
-      name: "Anual",
-      price: "R$ 59",
+      name: "Semestral Standard", 
+      price: "R$ 116,90",
       period: "/mês",
-      description: "Máximo valor para quem leva o treino a sério",
+      description: "Compromisso de médio prazo com desconto",
       features: [
-        "Tudo do plano trimestral",
-        "Personal trainer 2x/semana",
-        "Avaliações mensais",
-        "Plano nutricional completo",
-        "Acesso prioritário aos equipamentos",
-        "Zona VIP de descanso",
-        "2 meses grátis no ano"
+        "6 meses de acesso total",
+        "Parcelamento em até 6x", 
+        "Valor total: R$ 701,40",
+        "Desconto progressivo",
+        "Acesso livre 24h"
+      ],
+      popular: false
+    },
+    {
+      name: "Anual Standard",
+      price: "R$ 110,40", 
+      period: "/mês",
+      description: "Melhor custo-benefício para comprometidos",
+      features: [
+        "12 meses de acesso",
+        "Parcelamento em até 12x",
+        "Valor total: R$ 1.324,80", 
+        "Melhor valor mensal",
+        "Investimento na sua saúde"
       ],
       popular: false
     }
@@ -63,7 +99,7 @@ const Plans = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {plans.map((plan, index) => (
             <Card 
               key={index} 
