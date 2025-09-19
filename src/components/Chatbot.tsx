@@ -23,49 +23,13 @@ const Chatbot = () => {
     }
   ]);
   const [inputMessage, setInputMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const botResponses = {
-    horario: "Funcionamos 24 horas por dia, 7 dias da semana! Você pode treinar no horário que for melhor para você.",
-    planos: "Oferecemos 3 planos: Mensal (R$89), Trimestral (R$69/mês) e Anual (R$59/mês). Qual te interessa mais?",
-    endereco: "Estamos localizados em Ubajara. Entre em contato conosco para o endereço exato e direções!",
-    equipamentos: "Temos equipamentos de última geração: aparelhos Life Fitness, esteiras, bikes, pesos livres e área funcional completa.",
-    aulas: "Oferecemos Zumba, Spinning, Pilates e Crossfit. As aulas são incluídas nos planos Trimestral e Anual.",
-    personal: "Nossos personal trainers são certificados e experientes. No plano Anual você tem 2 sessões por semana incluídas!",
-    avaliacao: "A primeira avaliação física é gratuita para novos alunos! Agende a sua e conheça nossos profissionais.",
-    default: "Obrigado pela pergunta! Para informações mais específicas, recomendo que você nos visite ou entre em contato por telefone. Posso ajudar com horários, planos, equipamentos ou aulas em grupo."
-  };
+  const N8N_WEBHOOK_URL = "https://startprojectddd.app.n8n.cloud/webhook/98241a0d-9ba3-41dc-8cfa-072921b0b932/chat";
 
-  const getResponse = (message: string): string => {
-    const lowerMessage = message.toLowerCase();
-    
-    if (lowerMessage.includes("horário") || lowerMessage.includes("funciona") || lowerMessage.includes("aberto")) {
-      return botResponses.horario;
-    }
-    if (lowerMessage.includes("plano") || lowerMessage.includes("preço") || lowerMessage.includes("valor") || lowerMessage.includes("mensalidade")) {
-      return botResponses.planos;
-    }
-    if (lowerMessage.includes("endereço") || lowerMessage.includes("localização") || lowerMessage.includes("onde")) {
-      return botResponses.endereco;
-    }
-    if (lowerMessage.includes("equipamento") || lowerMessage.includes("aparelho") || lowerMessage.includes("musculação")) {
-      return botResponses.equipamentos;
-    }
-    if (lowerMessage.includes("aula") || lowerMessage.includes("grupo") || lowerMessage.includes("zumba") || lowerMessage.includes("spinning")) {
-      return botResponses.aulas;
-    }
-    if (lowerMessage.includes("personal") || lowerMessage.includes("trainer") || lowerMessage.includes("instrutor")) {
-      return botResponses.personal;
-    }
-    if (lowerMessage.includes("avaliação") || lowerMessage.includes("avaliacao") || lowerMessage.includes("teste")) {
-      return botResponses.avaliacao;
-    }
-    
-    return botResponses.default;
-  };
-
-  const handleSendMessage = () => {
-    if (!inputMessage.trim()) return;
+  const handleSendMessage = async () => {
+    if (!inputMessage.trim() || isLoading) return;
 
     const userMessage: Message = {
       id: Date.now(),
@@ -75,19 +39,57 @@ const Chatbot = () => {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    setIsLoading(true);
     
-    // Simulate bot response delay
-    setTimeout(() => {
+    try {
+      const response = await fetch(N8N_WEBHOOK_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          message: inputMessage,
+          timestamp: new Date().toISOString(),
+          source: "website_chat"
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Falha na comunicação com o agente');
+      }
+
+      const data = await response.json();
+      
       const botResponse: Message = {
         id: Date.now() + 1,
-        text: getResponse(inputMessage),
+        text: data.response || data.message || "Desculpe, não consegui processar sua mensagem. Tente novamente.",
         isBot: true,
         timestamp: new Date()
       };
+      
       setMessages(prev => [...prev, botResponse]);
-    }, 1000);
-
-    setInputMessage("");
+      
+    } catch (error) {
+      console.error("Erro ao comunicar com o agente:", error);
+      
+      const errorMessage: Message = {
+        id: Date.now() + 1,
+        text: "Desculpe, estou com problemas técnicos no momento. Tente novamente em alguns instantes ou entre em contato conosco diretamente.",
+        isBot: true,
+        timestamp: new Date()
+      };
+      
+      setMessages(prev => [...prev, errorMessage]);
+      
+      toast({
+        title: "Erro de conexão",
+        description: "Não foi possível conectar com o assistente virtual",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+      setInputMessage("");
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -138,6 +140,22 @@ const Chatbot = () => {
                     </div>
                   </div>
                 ))}
+                
+                {/* Loading indicator */}
+                {isLoading && (
+                  <div className="flex justify-start">
+                    <div className="bg-muted text-foreground p-3 rounded-lg max-w-[80%]">
+                      <div className="flex items-center gap-2">
+                        <div className="flex space-x-1">
+                          <div className="w-2 h-2 bg-primary rounded-full animate-bounce"></div>
+                          <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                          <div className="w-2 h-2 bg-primary rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                        </div>
+                        <span className="text-xs text-muted-foreground">Digitando...</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Input Area */}
@@ -149,11 +167,13 @@ const Chatbot = () => {
                     onKeyPress={handleKeyPress}
                     placeholder="Digite sua pergunta..."
                     className="flex-1"
+                    disabled={isLoading}
                   />
                   <Button
                     onClick={handleSendMessage}
                     size="sm"
                     className="hero-gradient hover:opacity-90"
+                    disabled={isLoading}
                   >
                     <Send className="h-4 w-4" />
                   </Button>
@@ -168,6 +188,7 @@ const Chatbot = () => {
                       size="sm"
                       className="text-xs"
                       onClick={() => setInputMessage(question)}
+                      disabled={isLoading}
                     >
                       {question}
                     </Button>
