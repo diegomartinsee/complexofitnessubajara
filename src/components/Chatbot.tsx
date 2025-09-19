@@ -76,45 +76,80 @@ const Chatbot = () => {
     try {
       console.log("Enviando mensagem para n8n:", inputMessage);
       
-      const response = await fetch(N8N_WEBHOOK_URL, {
+      // Tentativa 1: Formato simples
+      let response = await fetch(N8N_WEBHOOK_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          message: inputMessage,
-          timestamp: new Date().toISOString(),
-          source: "website_chat"
+          message: inputMessage
         }),
       });
 
-      console.log("Resposta do n8n:", response.status, response.statusText);
+      console.log("Primeira tentativa - Status:", response.status);
 
+      // Se a primeira tentativa falhar, tenta formato alternativo
       if (!response.ok) {
-        console.log("N8n retornou erro, usando fallback");
-        // Se o n8n falhar, usar resposta de fallback
-        const fallbackResponse: Message = {
+        console.log("Tentando formato alternativo...");
+        response = await fetch(N8N_WEBHOOK_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            text: inputMessage,
+            user: "website_visitor",
+            timestamp: new Date().toISOString()
+          }),
+        });
+        
+        console.log("Segunda tentativa - Status:", response.status);
+      }
+
+      // Se ainda não funcionou, tenta formato mais simples
+      if (!response.ok) {
+        console.log("Tentando formato string simples...");
+        response = await fetch(N8N_WEBHOOK_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "text/plain",
+          },
+          body: inputMessage,
+        });
+        
+        console.log("Terceira tentativa - Status:", response.status);
+      }
+
+      if (response.ok) {
+        const data = await response.json().catch(() => response.text());
+        console.log("Dados recebidos do n8n:", data);
+        
+        let responseText = "";
+        if (typeof data === 'string') {
+          responseText = data;
+        } else if (data.response) {
+          responseText = data.response;
+        } else if (data.message) {
+          responseText = data.message;
+        } else if (data.text) {
+          responseText = data.text;
+        } else {
+          responseText = getFallbackResponse(inputMessage);
+        }
+        
+        const botResponse: Message = {
           id: Date.now() + 1,
-          text: getFallbackResponse(inputMessage),
+          text: responseText,
           isBot: true,
           timestamp: new Date()
         };
         
-        setMessages(prev => [...prev, fallbackResponse]);
-        return;
+        setMessages(prev => [...prev, botResponse]);
+      } else {
+        console.log("Todas as tentativas falharam, usando fallback");
+        throw new Error('Webhook não está funcionando');
       }
-
-      const data = await response.json();
-      console.log("Dados recebidos do n8n:", data);
-      
-      const botResponse: Message = {
-        id: Date.now() + 1,
-        text: data.response || data.message || getFallbackResponse(inputMessage),
-        isBot: true,
-        timestamp: new Date()
-      };
-      
-      setMessages(prev => [...prev, botResponse]);
       
     } catch (error) {
       console.error("Erro ao comunicar com o agente, usando fallback:", error);
