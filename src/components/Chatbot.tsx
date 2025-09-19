@@ -28,6 +28,38 @@ const Chatbot = () => {
 
   const N8N_WEBHOOK_URL = "https://startprojectddd.app.n8n.cloud/webhook/98241a0d-9ba3-41dc-8cfa-072921b0b932/chat";
 
+  // Fallback responses para quando o n8n não estiver disponível
+  const getFallbackResponse = (message: string): string => {
+    const lowerMessage = message.toLowerCase();
+    
+    if (lowerMessage.includes("horário") || lowerMessage.includes("funciona") || lowerMessage.includes("aberto")) {
+      return "Funcionamos 24 horas por dia, 7 dias da semana! Você pode treinar no horário que for melhor para você.";
+    }
+    if (lowerMessage.includes("plano") || lowerMessage.includes("preço") || lowerMessage.includes("valor") || lowerMessage.includes("mensalidade")) {
+      return "Oferecemos planos: Mensal Horário Fixo (R$110), Trimestral (R$123,40/mês), Semestral (R$116,90/mês) e Anual (R$110,40/mês). Também aceitamos TotalPass e Wellhub.";
+    }
+    if (lowerMessage.includes("endereço") || lowerMessage.includes("localização") || lowerMessage.includes("onde")) {
+      return "Estamos localizados em Ubajara. Entre em contato conosco para o endereço exato e direções!";
+    }
+    if (lowerMessage.includes("equipamento") || lowerMessage.includes("aparelho") || lowerMessage.includes("musculação")) {
+      return "Temos equipamentos de última geração para musculação, cardio e área funcional completa.";
+    }
+    if (lowerMessage.includes("aula") || lowerMessage.includes("pilates") || lowerMessage.includes("grupo")) {
+      return "Oferecemos Pilates e outras modalidades. Entre em contato para saber mais sobre horários e disponibilidade.";
+    }
+    if (lowerMessage.includes("personal") || lowerMessage.includes("trainer") || lowerMessage.includes("instrutor")) {
+      return "Temos personal trainers certificados e experientes. Entre em contato para agendar uma avaliação!";
+    }
+    if (lowerMessage.includes("nutrição") || lowerMessage.includes("nutricionist")) {
+      return "Oferecemos serviços de nutrição para complementar seu treino. Agende uma consulta conosco!";
+    }
+    if (lowerMessage.includes("fisioterapia")) {
+      return "Temos serviços de fisioterapia para reabilitação e prevenção de lesões.";
+    }
+    
+    return "Obrigado pela pergunta! Para informações mais específicas, recomendo que você nos visite ou entre em contato diretamente. Posso ajudar com horários, planos, equipamentos ou serviços.";
+  };
+
   const handleSendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
 
@@ -42,6 +74,8 @@ const Chatbot = () => {
     setIsLoading(true);
     
     try {
+      console.log("Enviando mensagem para n8n:", inputMessage);
+      
       const response = await fetch(N8N_WEBHOOK_URL, {
         method: "POST",
         headers: {
@@ -54,15 +88,28 @@ const Chatbot = () => {
         }),
       });
 
+      console.log("Resposta do n8n:", response.status, response.statusText);
+
       if (!response.ok) {
-        throw new Error('Falha na comunicação com o agente');
+        console.log("N8n retornou erro, usando fallback");
+        // Se o n8n falhar, usar resposta de fallback
+        const fallbackResponse: Message = {
+          id: Date.now() + 1,
+          text: getFallbackResponse(inputMessage),
+          isBot: true,
+          timestamp: new Date()
+        };
+        
+        setMessages(prev => [...prev, fallbackResponse]);
+        return;
       }
 
       const data = await response.json();
+      console.log("Dados recebidos do n8n:", data);
       
       const botResponse: Message = {
         id: Date.now() + 1,
-        text: data.response || data.message || "Desculpe, não consegui processar sua mensagem. Tente novamente.",
+        text: data.response || data.message || getFallbackResponse(inputMessage),
         isBot: true,
         timestamp: new Date()
       };
@@ -70,22 +117,17 @@ const Chatbot = () => {
       setMessages(prev => [...prev, botResponse]);
       
     } catch (error) {
-      console.error("Erro ao comunicar com o agente:", error);
+      console.error("Erro ao comunicar com o agente, usando fallback:", error);
       
-      const errorMessage: Message = {
+      // Usar resposta de fallback em caso de erro
+      const fallbackResponse: Message = {
         id: Date.now() + 1,
-        text: "Desculpe, estou com problemas técnicos no momento. Tente novamente em alguns instantes ou entre em contato conosco diretamente.",
+        text: getFallbackResponse(inputMessage),
         isBot: true,
         timestamp: new Date()
       };
       
-      setMessages(prev => [...prev, errorMessage]);
-      
-      toast({
-        title: "Erro de conexão",
-        description: "Não foi possível conectar com o assistente virtual",
-        variant: "destructive",
-      });
+      setMessages(prev => [...prev, fallbackResponse]);
     } finally {
       setIsLoading(false);
       setInputMessage("");
