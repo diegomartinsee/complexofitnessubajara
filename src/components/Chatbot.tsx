@@ -26,7 +26,7 @@ const Chatbot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const N8N_WEBHOOK_URL = "https://startprojectddd.app.n8n.cloud/webhook-test/db7c4514-0ee8-4821-9edd-7e924c7242c8";
+  const N8N_WEBHOOK_URL = "https://startprojectddd.app.n8n.cloud/webhook-test/chat-site";
 
   // Fallback responses para quando o n8n não estiver disponível
   const getFallbackResponse = (message: string): string => {
