@@ -28,38 +28,6 @@ const Chatbot = () => {
 
   const N8N_WEBHOOK_URL = "https://startprojectddd.app.n8n.cloud/webhook-test/chat-site";
 
-  // Fallback responses para quando o n8n não estiver disponível
-  const getFallbackResponse = (message: string): string => {
-    const lowerMessage = message.toLowerCase();
-    
-    if (lowerMessage.includes("horário") || lowerMessage.includes("funciona") || lowerMessage.includes("aberto")) {
-      return "Funcionamos 24 horas por dia, 7 dias da semana! Você pode treinar no horário que for melhor para você.";
-    }
-    if (lowerMessage.includes("plano") || lowerMessage.includes("preço") || lowerMessage.includes("valor") || lowerMessage.includes("mensalidade")) {
-      return "Oferecemos planos: Mensal Horário Fixo (R$110), Trimestral (R$123,40/mês), Semestral (R$116,90/mês) e Anual (R$110,40/mês). Também aceitamos TotalPass e Wellhub.";
-    }
-    if (lowerMessage.includes("endereço") || lowerMessage.includes("localização") || lowerMessage.includes("onde")) {
-      return "Estamos localizados em Ubajara. Entre em contato conosco para o endereço exato e direções!";
-    }
-    if (lowerMessage.includes("equipamento") || lowerMessage.includes("aparelho") || lowerMessage.includes("musculação")) {
-      return "Temos equipamentos de última geração para musculação, cardio e área funcional completa.";
-    }
-    if (lowerMessage.includes("aula") || lowerMessage.includes("pilates") || lowerMessage.includes("grupo")) {
-      return "Oferecemos Pilates e outras modalidades. Entre em contato para saber mais sobre horários e disponibilidade.";
-    }
-    if (lowerMessage.includes("personal") || lowerMessage.includes("trainer") || lowerMessage.includes("instrutor")) {
-      return "Temos personal trainers certificados e experientes. Entre em contato para agendar uma avaliação!";
-    }
-    if (lowerMessage.includes("nutrição") || lowerMessage.includes("nutricionist")) {
-      return "Oferecemos serviços de nutrição para complementar seu treino. Agende uma consulta conosco!";
-    }
-    if (lowerMessage.includes("fisioterapia")) {
-      return "Temos serviços de fisioterapia para reabilitação e prevenção de lesões.";
-    }
-    
-    return "Obrigado pela pergunta! Para informações mais específicas, recomendo que você nos visite ou entre em contato diretamente. Posso ajudar com horários, planos, equipamentos ou serviços.";
-  };
-
   const handleSendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
 
@@ -104,7 +72,7 @@ const Chatbot = () => {
         } else if (data.text) {
           responseText = data.text;
         } else {
-          responseText = getFallbackResponse(inputMessage);
+          responseText = "Desculpe, não consegui processar sua mensagem. Tente novamente.";
         }
         
         const botResponse: Message = {
@@ -116,22 +84,29 @@ const Chatbot = () => {
         
         setMessages(prev => [...prev, botResponse]);
       } else {
-        console.log("Webhook retornou erro, usando fallback");
-        throw new Error('Webhook não está funcionando');
+        console.error("Webhook retornou erro:", response.status);
+        
+        const errorResponse: Message = {
+          id: Date.now() + 1,
+          text: "Desculpe, estou temporariamente indisponível. Tente novamente em alguns instantes.",
+          isBot: true,
+          timestamp: new Date()
+        };
+        
+        setMessages(prev => [...prev, errorResponse]);
       }
       
     } catch (error) {
-      console.error("Erro ao comunicar com o agente, usando fallback:", error);
+      console.error("Erro ao comunicar com o webhook:", error);
       
-      // Usar resposta de fallback em caso de erro
-      const fallbackResponse: Message = {
+      const errorResponse: Message = {
         id: Date.now() + 1,
-        text: getFallbackResponse(inputMessage),
+        text: "Desculpe, ocorreu um erro de conexão. Verifique sua internet e tente novamente.",
         isBot: true,
         timestamp: new Date()
       };
       
-      setMessages(prev => [...prev, fallbackResponse]);
+      setMessages(prev => [...prev, errorResponse]);
     } finally {
       setIsLoading(false);
       setInputMessage("");
