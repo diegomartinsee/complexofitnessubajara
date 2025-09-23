@@ -76,8 +76,7 @@ const Chatbot = () => {
     try {
       console.log("Enviando mensagem para n8n:", inputMessage);
       
-      // Tentativa 1: Formato simples
-      let response = await fetch(N8N_WEBHOOK_URL, {
+      const response = await fetch(N8N_WEBHOOK_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -87,47 +86,17 @@ const Chatbot = () => {
         }),
       });
 
-      console.log("Primeira tentativa - Status:", response.status);
-
-      // Se a primeira tentativa falhar, tenta formato alternativo
-      if (!response.ok) {
-        console.log("Tentando formato alternativo...");
-        response = await fetch(N8N_WEBHOOK_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            text: inputMessage,
-            user: "website_visitor",
-            timestamp: new Date().toISOString()
-          }),
-        });
-        
-        console.log("Segunda tentativa - Status:", response.status);
-      }
-
-      // Se ainda não funcionou, tenta formato mais simples
-      if (!response.ok) {
-        console.log("Tentando formato string simples...");
-        response = await fetch(N8N_WEBHOOK_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "text/plain",
-          },
-          body: inputMessage,
-        });
-        
-        console.log("Terceira tentativa - Status:", response.status);
-      }
+      console.log("Resposta do n8n - Status:", response.status);
 
       if (response.ok) {
-        const data = await response.json().catch(() => response.text());
+        const data = await response.json();
         console.log("Dados recebidos do n8n:", data);
         
         let responseText = "";
         if (typeof data === 'string') {
           responseText = data;
+        } else if (data.output) {
+          responseText = data.output;
         } else if (data.response) {
           responseText = data.response;
         } else if (data.message) {
@@ -147,7 +116,7 @@ const Chatbot = () => {
         
         setMessages(prev => [...prev, botResponse]);
       } else {
-        console.log("Todas as tentativas falharam, usando fallback");
+        console.log("Webhook retornou erro, usando fallback");
         throw new Error('Webhook não está funcionando');
       }
       
