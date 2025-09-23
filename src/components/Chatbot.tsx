@@ -61,16 +61,20 @@ const Chatbot = () => {
         console.log("Dados recebidos do n8n:", data);
         
         let responseText = "";
-        if (typeof data === 'string') {
+
+        // Se o n8n retornar um array com objeto
+        if (Array.isArray(data) && data.length > 0) {
+          if (data[0].output) {
+            responseText = data[0].output;
+          } else if (data[0].reply) {
+            responseText = data[0].reply;
+          } else {
+            responseText = "Desculpe, não consegui processar sua mensagem. Tente novamente.";
+          }
+        } else if (typeof data === 'string') {
           responseText = data;
-        } else if (data.output) {
-          responseText = data.output;
-        } else if (data.response) {
-          responseText = data.response;
-        } else if (data.message) {
-          responseText = data.message;
-        } else if (data.text) {
-          responseText = data.text;
+        } else if (data.reply) {
+          responseText = data.reply;
         } else {
           responseText = "Desculpe, não consegui processar sua mensagem. Tente novamente.";
         }
