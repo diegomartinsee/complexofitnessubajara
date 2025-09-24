@@ -93,6 +93,7 @@ const Chatbot = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            name: userName,
             message: inputMessage,
             sessionId: userCPF
           }),
