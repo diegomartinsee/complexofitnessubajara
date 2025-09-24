@@ -12,12 +12,17 @@ interface Message {
   timestamp: Date;
 }
 
+type ChatState = 'asking-name' | 'asking-cpf' | 'ready';
+
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [chatState, setChatState] = useState<ChatState>('asking-name');
+  const [userName, setUserName] = useState("");
+  const [userCPF, setUserCPF] = useState("");
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Olá! Sou o assistente virtual da Academia Complexo Fitness Ubajara. Como posso ajudar você hoje?",
+      text: "Olá! Sou o assistente virtual da Academia Complexo Fitness Ubajara. Para começarmos, preciso de algumas informações. Qual é o seu nome?",
       isBot: true,
       timestamp: new Date()
     }
@@ -42,62 +47,102 @@ const Chatbot = () => {
     setIsLoading(true);
     
     try {
-      console.log("Enviando mensagem para n8n:", inputMessage);
-      
-      const response = await fetch(N8N_WEBHOOK_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          message: inputMessage
-        }),
-      });
-
-      console.log("Resposta do n8n - Status:", response.status);
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log("Dados recebidos do n8n:", data);
-        
-        let responseText = "";
-
-        // Se o n8n retornar um array com objeto
-        if (Array.isArray(data) && data.length > 0) {
-          if (data[0].output) {
-            responseText = data[0].output;
-          } else if (data[0].reply) {
-            responseText = data[0].reply;
-          } else {
-            responseText = "Desculpe, não consegui processar sua mensagem. Tente novamente.";
-          }
-        } else if (typeof data === 'string') {
-          responseText = data;
-        } else if (data.reply) {
-          responseText = data.reply;
-        } else {
-          responseText = "Desculpe, não consegui processar sua mensagem. Tente novamente.";
-        }
+      if (chatState === 'asking-name') {
+        setUserName(inputMessage.trim());
         
         const botResponse: Message = {
           id: Date.now() + 1,
-          text: responseText,
+          text: `Prazer em conhecê-lo, ${inputMessage.trim()}! Agora, para finalizar, poderia me informar seu CPF (apenas números)?`,
           isBot: true,
           timestamp: new Date()
         };
         
         setMessages(prev => [...prev, botResponse]);
+        setChatState('asking-cpf');
+      } else if (chatState === 'asking-cpf') {
+        const cpfNumbers = inputMessage.replace(/\D/g, '');
+        
+        if (cpfNumbers.length !== 11) {
+          const errorResponse: Message = {
+            id: Date.now() + 1,
+            text: "Por favor, digite um CPF válido com 11 números.",
+            isBot: true,
+            timestamp: new Date()
+          };
+          setMessages(prev => [...prev, errorResponse]);
+        } else {
+          setUserCPF(cpfNumbers);
+          
+          const botResponse: Message = {
+            id: Date.now() + 1,
+            text: `Perfeito! Agora posso ajudá-lo com suas dúvidas sobre a Academia Complexo Fitness Ubajara. Como posso ajudar você hoje?`,
+            isBot: true,
+            timestamp: new Date()
+          };
+          
+          setMessages(prev => [...prev, botResponse]);
+          setChatState('ready');
+        }
       } else {
-        console.error("Webhook retornou erro:", response.status);
+        // Chat normal - comunicação com o webhook
+        console.log("Enviando mensagem para n8n:", inputMessage);
         
-        const errorResponse: Message = {
-          id: Date.now() + 1,
-          text: "Desculpe, estou temporariamente indisponível. Tente novamente em alguns instantes.",
-          isBot: true,
-          timestamp: new Date()
-        };
-        
-        setMessages(prev => [...prev, errorResponse]);
+        const response = await fetch(N8N_WEBHOOK_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            message: inputMessage,
+            sessionId: userCPF
+          }),
+        });
+
+        console.log("Resposta do n8n - Status:", response.status);
+
+        if (response.ok) {
+          const data = await response.json();
+          console.log("Dados recebidos do n8n:", data);
+          
+          let responseText = "";
+
+          // Se o n8n retornar um array com objeto
+          if (Array.isArray(data) && data.length > 0) {
+            if (data[0].output) {
+              responseText = data[0].output;
+            } else if (data[0].reply) {
+              responseText = data[0].reply;
+            } else {
+              responseText = "Desculpe, não consegui processar sua mensagem. Tente novamente.";
+            }
+          } else if (typeof data === 'string') {
+            responseText = data;
+          } else if (data.reply) {
+            responseText = data.reply;
+          } else {
+            responseText = "Desculpe, não consegui processar sua mensagem. Tente novamente.";
+          }
+          
+          const botResponse: Message = {
+            id: Date.now() + 1,
+            text: responseText,
+            isBot: true,
+            timestamp: new Date()
+          };
+          
+          setMessages(prev => [...prev, botResponse]);
+        } else {
+          console.error("Webhook retornou erro:", response.status);
+          
+          const errorResponse: Message = {
+            id: Date.now() + 1,
+            text: "Desculpe, estou temporariamente indisponível. Tente novamente em alguns instantes.",
+            isBot: true,
+            timestamp: new Date()
+          };
+          
+          setMessages(prev => [...prev, errorResponse]);
+        }
       }
       
     } catch (error) {
@@ -190,7 +235,11 @@ const Chatbot = () => {
                     value={inputMessage}
                     onChange={(e) => setInputMessage(e.target.value)}
                     onKeyPress={handleKeyPress}
-                    placeholder="Digite sua pergunta..."
+                    placeholder={
+                      chatState === 'asking-name' ? "Digite seu nome..." :
+                      chatState === 'asking-cpf' ? "Digite seu CPF (apenas números)..." :
+                      "Digite sua pergunta..."
+                    }
                     className="flex-1"
                     disabled={isLoading}
                   />
@@ -205,20 +254,22 @@ const Chatbot = () => {
                 </div>
                 
                 {/* Quick Questions */}
-                <div className="flex flex-wrap gap-2 mt-3">
-                  {["Horários", "Planos", "Equipamentos", "Aulas"].map((question) => (
-                    <Button
-                      key={question}
-                      variant="outline"
-                      size="sm"
-                      className="text-xs"
-                      onClick={() => setInputMessage(question)}
-                      disabled={isLoading}
-                    >
-                      {question}
-                    </Button>
-                  ))}
-                </div>
+                {chatState === 'ready' && (
+                  <div className="flex flex-wrap gap-2 mt-3">
+                    {["Horários", "Planos", "Equipamentos", "Aulas"].map((question) => (
+                      <Button
+                        key={question}
+                        variant="outline"
+                        size="sm"
+                        className="text-xs"
+                        onClick={() => setInputMessage(question)}
+                        disabled={isLoading}
+                      >
+                        {question}
+                      </Button>
+                    ))}
+                  </div>
+                )}
               </div>
             </CardContent>
           </Card>
