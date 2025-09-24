@@ -26,7 +26,7 @@ const Chatbot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const N8N_WEBHOOK_URL = "https://startprojectddd.app.n8n.cloud/webhook-test/chat-site";
+  const N8N_WEBHOOK_URL = "https://startprojectddd.app.n8n.cloud/webhook/chat-site";
 
   const handleSendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
