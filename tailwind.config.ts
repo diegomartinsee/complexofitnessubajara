@@ -70,7 +70,6 @@ export default {
       fontFamily: {
         'heading': 'var(--font-heading)',
         'body': 'var(--font-body)',
-        'rigelstar': ['Orbitron', 'monospace'],
       },
       transitionTimingFunction: {
         'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
@@ -104,10 +103,10 @@ export default {
         },
         'pulse-glow': {
           '0%, 100%': { 
-            boxShadow: '0 0 20px hsl(99 95% 33% / 0.3)'
+            boxShadow: '0 0 20px hsl(16 100% 60% / 0.3)'
           },
           '50%': { 
-            boxShadow: '0 0 40px hsl(99 95% 33% / 0.6)'
+            boxShadow: '0 0 40px hsl(16 100% 60% / 0.6)'
           },
         },
       },
