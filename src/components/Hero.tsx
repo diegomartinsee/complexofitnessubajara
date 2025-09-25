@@ -33,19 +33,11 @@ const Hero = () => {
           </Button>
         </div>
         
-        {/* Stats */}
-        <div className="grid grid-cols-3 gap-8 mt-16 pt-16 border-t border-border">
-          <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold font-heading text-primary mb-2">500+</div>
-            <div className="text-muted-foreground">Alunos ativos</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold font-heading text-primary mb-2">8</div>
-            <div className="text-muted-foreground">Anos de experiência</div>
-          </div>
+        {/* Stats - Apenas funcionamento 24h */}
+        <div className="grid grid-cols-1 gap-8 mt-16 pt-16 border-t border-border">
           <div className="text-center">
             <div className="text-3xl sm:text-4xl font-bold font-heading text-primary mb-2">24h</div>
-            <div className="text-muted-foreground">Funcionamento</div>
+            <div className="text-muted-foreground">Acesso livre aos equipamentos</div>
           </div>
         </div>
       </div>

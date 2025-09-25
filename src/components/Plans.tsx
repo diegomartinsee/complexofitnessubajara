@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check, Star } from "lucide-react";
+import totalpassLogo from "@/assets/totalpass-logo.png";
+import wellhubLogo from "@/assets/wellhub-logo.png";
 
 const Plans = () => {
   const plans = [
@@ -129,11 +131,23 @@ const Plans = () => {
         </div>
 
         <div className="text-center mt-12">
-          <div className="mb-6">
-            <h3 className="text-xl font-semibold mb-4">Também aceitamos:</h3>
-            <div className="flex justify-center items-center gap-8 flex-wrap">
-              <div className="text-primary font-semibold text-lg">TotalPass</div>
-              <div className="text-primary font-semibold text-lg">Wellhub</div>
+          <div className="mb-8">
+            <h3 className="text-xl font-semibold font-heading mb-6">Também aceitamos:</h3>
+            <div className="flex justify-center items-center gap-12 flex-wrap">
+              <div className="flex items-center">
+                <img 
+                  src={totalpassLogo} 
+                  alt="TotalPass" 
+                  className="h-8 w-auto"
+                />
+              </div>
+              <div className="flex items-center">
+                <img 
+                  src={wellhubLogo} 
+                  alt="Wellhub" 
+                  className="h-10 w-auto"
+                />
+              </div>
             </div>
           </div>
           

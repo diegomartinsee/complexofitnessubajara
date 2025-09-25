@@ -43,14 +43,10 @@ const About = () => {
               Nossa missão é proporcionar um ambiente acolhedor, moderno e completo, onde cada pessoa pode encontrar seu caminho para uma vida mais saudável e ativa.
             </p>
 
-            <div className="grid grid-cols-2 gap-6">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary mb-2">500+</div>
-                <div className="text-muted-foreground text-sm">Alunos Satisfeitos</div>
-              </div>
+            <div className="grid grid-cols-1 gap-6">
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary mb-2">15+</div>
-                <div className="text-muted-foreground text-sm">Profissionais</div>
+                <div className="text-muted-foreground text-sm">Profissionais Qualificados</div>
               </div>
             </div>
           </div>

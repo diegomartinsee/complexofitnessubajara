@@ -85,8 +85,9 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold mb-1">Funcionamento</h4>
                     <p className="text-muted-foreground">
-                      Segunda a Domingo<br />
-                      24 horas por dia
+                      Segunda a Sexta: 5:30 às 22:00<br />
+                      Sábado: 6:00 às 12:00<br />
+                      Domingo: 8:00 às 13:00
                     </p>
                   </div>
                 </div>
