@@ -8,53 +8,53 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Base colors - Modern fitness theme */
-    --background: 0 0% 4%;
-    --foreground: 0 0% 98%;
+    /* Base colors - Paleta: Preto, Verde (#36a602), Branco */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
 
-    --card: 0 0% 7%;
-    --card-foreground: 0 0% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
 
-    --popover: 0 0% 7%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
 
-    /* Primary - Complexo Fitness Green */
-    --primary: 108 83% 43%;
+    /* Primary - Verde (#36a602) */
+    --primary: 99 95% 33%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 108 83% 53%;
+    --primary-glow: 99 95% 40%;
 
-    /* Secondary - Dark accent */
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 95%;
+    /* Secondary - Tons de cinza */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 0%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 108 83% 43%;
+    --accent: 99 95% 33%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 18%;
-    --input: 0 0% 12%;
-    --ring: 108 83% 43%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 99 95% 33%;
 
     --radius: 0.75rem;
 
     /* Custom fitness theme variables */
-    --hero-gradient: linear-gradient(135deg, hsl(108 83% 43%), hsl(108 83% 53%));
-    --card-gradient: linear-gradient(145deg, hsl(0 0% 7%), hsl(0 0% 10%));
-    --glow-shadow: 0 0 30px hsl(108 83% 43% / 0.3);
-    --hero-shadow: 0 20px 60px hsl(108 83% 43% / 0.4);
+    --hero-gradient: linear-gradient(135deg, hsl(99 95% 33%), hsl(99 95% 40%));
+    --card-gradient: linear-gradient(145deg, hsl(0 0% 98%), hsl(0 0% 95%));
+    --glow-shadow: 0 0 30px hsl(99 95% 33% / 0.3);
+    --hero-shadow: 0 20px 60px hsl(99 95% 33% / 0.4);
     
     /* Animation variables */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    /* Typography */
-    --font-heading: 'Inter', system-ui, sans-serif;
-    --font-body: 'Inter', system-ui, sans-serif;
+    /* Typography - Rigelstar (Orbitron) */
+    --font-heading: 'Orbitron', monospace;
+    --font-body: 'Orbitron', monospace;
 
     --sidebar-background: 0 0% 98%;
 
@@ -74,33 +74,33 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 99 95% 33%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 99 95% 33%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 99 95% 33%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -195,9 +195,9 @@ All colors MUST be HSL.
 
 @keyframes pulse-glow {
   0%, 100% { 
-    box-shadow: 0 0 20px hsl(108 83% 43% / 0.3);
+    box-shadow: 0 0 20px hsl(99 95% 33% / 0.3);
   }
   50% { 
-    box-shadow: 0 0 40px hsl(108 83% 43% / 0.6);
+    box-shadow: 0 0 40px hsl(99 95% 33% / 0.6);
   }
 }
