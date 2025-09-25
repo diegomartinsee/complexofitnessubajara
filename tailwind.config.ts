@@ -70,6 +70,7 @@ export default {
       fontFamily: {
         'heading': 'var(--font-heading)',
         'body': 'var(--font-body)',
+        'rigelstar': 'var(--font-heading)', // Alias para uso em títulos e logotipos
       },
       transitionTimingFunction: {
         'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',

@@ -52,8 +52,8 @@ All colors MUST be HSL.
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    /* Typography */
-    --font-heading: 'Inter', system-ui, sans-serif;
+    /* Typography - Futurista e moderna */
+    --font-heading: 'Orbitron', monospace;
     --font-body: 'Inter', system-ui, sans-serif;
 
     --sidebar-background: 0 0% 98%;
