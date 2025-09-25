@@ -14,7 +14,7 @@ const Hero = () => {
       
       {/* Hero Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6">
+        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold font-heading mb-6">
           <span className="text-gradient">Complexo Fitness</span>
           <br />
           <span className="text-foreground">Ubajara</span>
@@ -36,15 +36,15 @@ const Hero = () => {
         {/* Stats */}
         <div className="grid grid-cols-3 gap-8 mt-16 pt-16 border-t border-border">
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">500+</div>
+            <div className="text-3xl sm:text-4xl font-bold font-heading text-primary mb-2">500+</div>
             <div className="text-muted-foreground">Alunos ativos</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">8</div>
+            <div className="text-3xl sm:text-4xl font-bold font-heading text-primary mb-2">8</div>
             <div className="text-muted-foreground">Anos de experiência</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">24h</div>
+            <div className="text-3xl sm:text-4xl font-bold font-heading text-primary mb-2">24h</div>
             <div className="text-muted-foreground">Funcionamento</div>
           </div>
         </div>

@@ -49,7 +49,7 @@ const Services = () => {
     <section className="py-20 px-4 sm:px-6 lg:px-8" id="servicos">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+          <h2 className="text-4xl sm:text-5xl font-bold font-heading mb-6">
             Nossos <span className="text-gradient">Serviços</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -80,7 +80,7 @@ const Services = () => {
               </div>
               
               <CardHeader>
-                <CardTitle className={`text-xl text-foreground ${service.isPrimary ? 'text-2xl' : ''}`}>
+                <CardTitle className={`text-xl font-heading text-foreground ${service.isPrimary ? 'text-2xl' : ''}`}>
                   {service.title}
                 </CardTitle>
                 <CardDescription className="text-muted-foreground">

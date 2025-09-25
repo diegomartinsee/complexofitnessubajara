@@ -31,7 +31,7 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
           <div>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <h2 className="text-4xl sm:text-5xl font-bold font-heading mb-6">
               Sobre o <span className="text-gradient">Complexo Fitness</span>
             </h2>
             
@@ -73,7 +73,7 @@ const About = () => {
 
         {/* Team Section */}
         <div className="mt-20 text-center">
-          <h3 className="text-3xl font-bold mb-8">
+          <h3 className="text-3xl font-bold font-heading mb-8">
             Nossa <span className="text-gradient">Equipe</span>
           </h3>
           

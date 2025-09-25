@@ -65,7 +65,7 @@ const Plans = () => {
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30" id="planos">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+          <h2 className="text-4xl sm:text-5xl font-bold font-heading mb-6">
             Escolha seu <span className="text-gradient">Plano</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -93,7 +93,7 @@ const Plans = () => {
               )}
               
               <CardHeader className="text-center pb-2">
-                <CardTitle className="text-2xl font-bold">{plan.name}</CardTitle>
+                <CardTitle className="text-2xl font-bold font-heading">{plan.name}</CardTitle>
                 <div className="flex items-baseline justify-center">
                   <span className="text-4xl font-bold text-primary">{plan.price}</span>
                   <span className="text-muted-foreground ml-1">{plan.period}</span>

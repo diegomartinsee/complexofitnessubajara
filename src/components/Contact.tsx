@@ -36,7 +36,7 @@ const Contact = () => {
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30" id="contato">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+          <h2 className="text-4xl sm:text-5xl font-bold font-heading mb-6">
             Entre em <span className="text-gradient">Contato</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -48,7 +48,7 @@ const Contact = () => {
           {/* Contact Info */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold mb-6">Informações de Contato</h3>
+              <h3 className="text-2xl font-bold font-heading mb-6">Informações de Contato</h3>
               
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
@@ -124,7 +124,7 @@ const Contact = () => {
           {/* Contact Form */}
           <Card className="card-gradient border-border">
             <CardHeader>
-              <CardTitle className="text-2xl">Envie uma mensagem</CardTitle>
+              <CardTitle className="text-2xl font-heading">Envie uma mensagem</CardTitle>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
