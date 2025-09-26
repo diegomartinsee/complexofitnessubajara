@@ -209,3 +209,53 @@ All colors MUST be HSL.
     box-shadow: 0 0 40px hsl(108 83% 43% / 0.6);
   }
 }
+
+/* Estilos para exibir mensagens com espaçamento uniforme */
+.chat-bubble .message-text {
+  box-sizing: border-box;
+  white-space: pre-wrap;       /* respeita \n como quebras de linha */
+  line-height: 1.45;           /* legibilidade */
+  padding: 0.5rem 0.75rem;     /* espaço interno do balão */
+  font-size: 0.95rem;
+  word-break: break-word;      /* evita overflow por palavras/URLs longas */
+  hyphens: auto;
+}
+
+/* Aplicar margem uniforme entre blocos internos (parágrafos, listas, headings) */
+.chat-bubble .message-text > * {
+  margin: 0 0 0.6rem 0;        /* margem inferior padrão */
+}
+
+/* Não deixar margem extra no último bloco */
+.chat-bubble .message-text > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Listas com recuo e margem inferior padronizados */
+.chat-bubble .message-text ul,
+.chat-bubble .message-text ol {
+  margin: 0 0 0.6rem 1.1rem;
+  padding-left: 1.1rem;
+}
+
+/* Itens de lista com espaçamento entre si */
+.chat-bubble .message-text li {
+  margin: 0.15rem 0;
+}
+
+/* Cabeçalhos/subtítulos inline mais próximos ao bloco seguinte */
+.chat-bubble .message-text strong,
+.chat-bubble .message-text b,
+.chat-bubble .message-text h1,
+.chat-bubble .message-text h2,
+.chat-bubble .message-text h3 {
+  display: inline-block;
+  margin-bottom: 0.25rem;
+}
+
+/* Caso o widget sobrescreva regras, permitir versão com maior especificidade / !important */
+.chat-bubble .message-text.override-important {
+  white-space: pre-wrap !important;
+  line-height: 1.45 !important;
+  padding: 0.5rem 0.75rem !important;
+}
