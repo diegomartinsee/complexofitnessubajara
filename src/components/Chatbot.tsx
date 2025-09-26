@@ -43,20 +43,7 @@ const sanitizeText = (s: string): string => {
   // 8) Remover linhas vazias isoladas extras (deixar no máximo 1 linha em branco entre blocos)
   s = s.replace(/(\n\s*){2,}/g, '\n\n');
 
-  // 9) Uniformizar formatação de planos
-  // Detecta padrões de planos e os reformata no padrão específico
-  s = s.replace(/(?:•\s*)?([^:\n]+):\s*\n*\s*(?:Preço|Valor):\s*(R\$\s*[0-9.,]+)\s*\n*\s*(?:Duração|Validade):\s*([^\n]+)\s*\n*\s*(?:Observação|Obs|Descrição)?:?\s*([^\n•]+)?/gi, (match, nome, preco, duracao, obs) => {
-    let resultado = `• ${nome.trim()}:\nPreço: ${preco.trim()}\nDuração: ${duracao.trim()}`;
-    if (obs && obs.trim()) {
-      resultado += `\nObservação: ${obs.trim()}`;
-    }
-    return resultado;
-  });
-
-  // 10) Garantir espaçamento correto entre planos (apenas uma quebra de linha)
-  s = s.replace(/(\n• [^:]+:[^\n•]+(?:\n[^•\n][^\n•]*)*)\n{2,}(?=• )/g, '$1\n');
-
-  // 11) Trim final e return
+  // 9) Trim final e return
   return s.trim();
 };
 
