@@ -37,7 +37,7 @@ const sanitizeText = (s: string): string => {
 
   // 7) Corrigir formatações monetárias comuns com espaços estranhos (ex.: "R$ 1. 324, 80" -> "R$ 1.324,80")
   s = s.replace(/R\$\s*([0-9\.\s]+,[0-9]{2})/g, (m, g1) => {
-    return 'R$ ' + g1.replace(/\s+/g, '');
+    return 'R$ ' + g1;
   });
 
   // 8) Remover linhas vazias isoladas extras (deixar no máximo 1 linha em branco entre blocos)
