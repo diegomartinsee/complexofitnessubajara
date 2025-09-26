@@ -31,41 +31,7 @@ const Chatbot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-const N8N_WEBHOOK_URL = "https://startprojectddd.app.n8n.cloud/webhook/chat-site";
-
-  // Função de sanitização de texto
-  const sanitizeText = (s: string) => {
-    if (!s || typeof s !== 'string') return '';
-
-    // 1) Trim geral
-    s = s.trim();
-
-    // 2) Remover espaços duplicados em cada linha e trim nas linhas
-    s = s.split('\n').map(l => l.replace(/\s{2,}/g, ' ').trim()).join('\n');
-
-    // 3) Substituir 3+ quebras por duas quebras (um parágrafo em branco)
-    s = s.replace(/\n{3,}/g, '\n\n');
-
-    // 4) Garantir no máximo 2 quebras no final do texto
-    s = s.replace(/\n{3,}$/g, '\n\n');
-
-    // 5) Remover espaços antes de pontuação
-    s = s.replace(/\s+([,.;:?!])/g, '$1');
-
-    // 6) Normalizar espaços ao redor de '—' e '•'
-    s = s.replace(/\s*—\s*/g, ' — ').replace(/\s*•\s*/g, ' • ');
-
-    // 7) Corrigir formatações monetárias comuns com espaços estranhos (ex.: "R$ 1. 324, 80" -> "R$ 1.324,80")
-    s = s.replace(/R\$\s*([0-9\.\s]+,[0-9]{2})/g, (m, g1) => {
-      return 'R$ ' + g1.replace(/\s+/g, '');
-    });
-
-    // 8) Remover linhas vazias isoladas extras (deixar no máximo 1 linha em branco entre blocos)
-    s = s.replace(/(\n\s*){2,}/g, '\n\n');
-
-    // 9) Trim final e return
-    return s.trim();
-  };
+  const N8N_WEBHOOK_URL = "https://startprojectddd.app.n8n.cloud/webhook/chat-site";
 
   const handleSendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
@@ -235,13 +201,13 @@ const N8N_WEBHOOK_URL = "https://startprojectddd.app.n8n.cloud/webhook/chat-site
                     className={`flex ${message.isBot ? 'justify-start' : 'justify-end'}`}
                   >
                     <div
-                      className={`max-w-[80%] p-3 rounded-lg chat-bubble ${
+                      className={`max-w-[80%] p-3 rounded-lg ${
                         message.isBot
                           ? 'bg-muted text-foreground'
                           : 'hero-gradient text-primary-foreground'
                       }`}
                     >
-                      <p className="text-sm message-text">{sanitizeText(message.text)}</p>
+                      <p className="text-sm message-text">{message.text}</p>
                     </div>
                   </div>
                 ))}
