@@ -168,6 +168,14 @@ All colors MUST be HSL.
     z-index: 1000;
   }
 
+  /* Chatbot message formatting */
+  .message-text {
+    white-space: pre-wrap;   /* respeita quebras de linha \n */
+    word-break: break-word;  /* evita overflow horizontal, quebra palavras longas */
+    line-height: 1.4;        /* aumenta espaçamento entre linhas */
+    margin: 0.2rem 0;
+  }
+
   /* Animation keyframes */
   .animate-float {
     animation: float 3s ease-in-out infinite;

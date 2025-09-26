@@ -207,7 +207,7 @@ const Chatbot = () => {
                           : 'hero-gradient text-primary-foreground'
                       }`}
                     >
-                      <p className="text-sm">{message.text}</p>
+                      <p className="text-sm message-text">{message.text}</p>
                     </div>
                   </div>
                 ))}
