@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -16,22 +16,65 @@ type ChatState = 'asking-name' | 'asking-cpf' | 'ready';
 
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [chatState, setChatState] = useState<ChatState>('asking-name');
-  const [userName, setUserName] = useState("");
-  const [userCPF, setUserCPF] = useState("");
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 1,
-      text: "Olá! Sou o assistente virtual da Academia Complexo Fitness Ubajara. Para começarmos, preciso de algumas informações. Qual é o seu nome?",
-      isBot: true,
-      timestamp: new Date()
+  
+  // Inicializar estados verificando localStorage
+  const initializeChatState = (): ChatState => {
+    const savedCPF = localStorage.getItem('fitness_chat_cpf');
+    return savedCPF ? 'ready' : 'asking-name';
+  };
+  
+  const initializeUserData = () => {
+    const savedName = localStorage.getItem('fitness_chat_name');
+    const savedCPF = localStorage.getItem('fitness_chat_cpf');
+    return {
+      name: savedName || "",
+      cpf: savedCPF || ""
+    };
+  };
+  
+  const initializeMessages = (): Message[] => {
+    const savedCPF = localStorage.getItem('fitness_chat_cpf');
+    if (savedCPF) {
+      return [
+        {
+          id: 1,
+          text: "Bem-vindo de volta! Como posso ajudá-lo hoje?",
+          isBot: true,
+          timestamp: new Date()
+        }
+      ];
     }
-  ]);
+    return [
+      {
+        id: 1,
+        text: "Olá! Sou o assistente virtual da Academia Complexo Fitness Ubajara. Para começarmos, preciso de algumas informações. Qual é o seu nome?",
+        isBot: true,
+        timestamp: new Date()
+      }
+    ];
+  };
+  
+  const [chatState, setChatState] = useState<ChatState>(initializeChatState());
+  const userData = initializeUserData();
+  const [userName, setUserName] = useState(userData.name);
+  const [userCPF, setUserCPF] = useState(userData.cpf);
+  const [messages, setMessages] = useState<Message[]>(initializeMessages());
   const [inputMessage, setInputMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
   const N8N_WEBHOOK_URL = "https://startprojectddd.app.n8n.cloud/webhook/chat-site";
+  
+  // Limpar localStorage ao fechar/atualizar página
+  useEffect(() => {
+    const handleBeforeUnload = () => {
+      localStorage.removeItem('fitness_chat_name');
+      localStorage.removeItem('fitness_chat_cpf');
+    };
+    
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
+  }, []);
 
   const handleSendMessage = async () => {
     if (!inputMessage.trim() || isLoading) return;
@@ -73,6 +116,10 @@ const Chatbot = () => {
         } else {
           setUserCPF(cpfNumbers);
           
+          // Salvar dados no localStorage
+          localStorage.setItem('fitness_chat_name', userName);
+          localStorage.setItem('fitness_chat_cpf', cpfNumbers);
+          
           const botResponse: Message = {
             id: Date.now() + 1,
             text: `Perfeito! Agora posso ajudá-lo com suas dúvidas sobre a Academia Complexo Fitness Ubajara. Como posso ajudar você hoje?`,
@@ -93,9 +140,9 @@ const Chatbot = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
+            sessionId: userCPF,
             name: userName,
-            message: inputMessage,
-            sessionId: userCPF
+            message: inputMessage
           }),
         });
 
