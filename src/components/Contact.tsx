@@ -58,9 +58,9 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold mb-1">Endereço</h4>
                     <p className="text-muted-foreground">
-                      Rua Principal, 123<br />
+                      Av. Constituintes, 360<br />
                       Centro - Ubajara, CE<br />
-                      CEP: 62350-000
+                      CEP: 62350-000, Brasil
                     </p>
                   </div>
                 </div>
@@ -72,8 +72,7 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold mb-1">Telefone</h4>
                     <p className="text-muted-foreground">
-                      (88) 9 9999-9999<br />
-                      (88) 3634-1234
+                      +55 88 99973-5251
                     </p>
                   </div>
                 </div>
@@ -85,9 +84,9 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold mb-1">Funcionamento</h4>
                     <p className="text-muted-foreground">
-                      Segunda a Sexta: 5:30 às 22:00<br />
-                      Sábado: 6:00 às 12:00<br />
-                      Domingo: 8:00 às 13:00
+                      Segunda a Sexta: 05:30 – 22:00<br />
+                      Sábado: 06:00 – 12:00<br />
+                      Domingo: 08:00 – 12:00
                     </p>
                   </div>
                 </div>

@@ -10,10 +10,24 @@ const Services = () => {
     {
       icon: <Dumbbell className="h-12 w-12 text-primary" />,
       title: "Musculação",
-      description: "Nosso serviço principal! Equipamentos de última geração para todos os níveis",
+      description: "Nosso serviço principal! Aparelhos premium e linha completa de pesos livres",
       image: weightsImage,
       isPrimary: true,
-      features: ["Aparelhos Life Fitness", "Pesos livres completos", "Área funcional", "Horários flexíveis"]
+      features: ["Aparelhos premium", "Linha completa de pesos livres", "Equipamentos de última geração", "Horários flexíveis"]
+    },
+    {
+      icon: <Activity className="h-12 w-12 text-primary" />,
+      title: "Área Funcional",
+      description: "Espaço preparado para treinos funcionais, circuitos e aulas em grupo",
+      image: personalTrainingImage,
+      features: ["Treinos funcionais", "Circuitos completos", "Aulas em grupo", "Espaço amplo"]
+    },
+    {
+      icon: <Users className="h-12 w-12 text-primary" />,
+      title: "Área Kids",
+      description: "Espaço seguro e monitorado para crianças enquanto você treina",
+      image: cardioImage,
+      features: ["Espaço seguro", "Monitoramento profissional", "Entretenimento garantido", "Tranquilidade para os pais"]
     },
     {
       icon: <Activity className="h-12 w-12 text-primary" />,
@@ -38,10 +52,10 @@ const Services = () => {
     },
     {
       icon: <ShoppingBag className="h-12 w-12 text-primary" />,
-      title: "Fitstore",
-      description: "Nossa loja com suplementos e acessórios fitness de qualidade",
+      title: "FitStore",
+      description: "Loja focada em roupas e acessórios fitness",
       image: personalTrainingImage,
-      features: ["Suplementos premium", "Acessórios fitness", "Preços especiais", "Produtos selecionados"]
+      features: ["Roupas fitness", "Acessórios de treino", "Preços especiais para alunos", "Produtos de qualidade"]
     }
   ];
 
@@ -105,10 +119,10 @@ const Services = () => {
         {/* Additional Services */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
           {[
-            { icon: <Timer className="h-8 w-8" />, title: "Horário Flexível", desc: "24h por dia" },
+            { icon: <Timer className="h-8 w-8" />, title: "Horários Flexíveis", desc: "Treinos cedo, tarde e fim de semana" },
             { icon: <Users className="h-8 w-8" />, title: "Personal Trainer", desc: "Acompanhamento profissional" },
             { icon: <Heart className="h-8 w-8" />, title: "Avaliação Física", desc: "Gratuita para novos alunos" },
-            { icon: <Dumbbell className="h-8 w-8" />, title: "Equipamentos", desc: "Sempre atualizados" }
+            { icon: <Activity className="h-8 w-8" />, title: "Aplicativo", desc: "Treino e acompanhamento de evolução" }
           ].map((item, index) => (
             <div key={index} className="text-center p-6 card-gradient rounded-lg border border-border">
               <div className="text-primary mb-3 flex justify-center">{item.icon}</div>

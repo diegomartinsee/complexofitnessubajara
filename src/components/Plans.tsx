@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Star } from "lucide-react";
+import { Check, Star, Users } from "lucide-react";
 import totalpassLogo from "@/assets/totalpass-logo.png";
 import wellhubLogo from "@/assets/wellhub-logo.png";
 
@@ -17,13 +17,13 @@ const Plans = () => {
         "Acesso completo à musculação",
         "Taxa R$10 para horário extra"
       ],
-      popular: false
+      popular: true
     },
     {
       name: "Trimestral Standard",
       price: "R$ 123,40",
       period: "/mês",
-      description: "Nosso plano mais popular com flexibilidade total",
+      description: "Flexibilidade total com parcelamento facilitado",
       features: [
         "Acesso livre 24h",
         "Parcelamento em até 3x",
@@ -31,7 +31,7 @@ const Plans = () => {
         "Flexibilidade de horários",
         "Equipamentos completos"
       ],
-      popular: true
+      popular: false
     },
     {
       name: "Semestral Standard", 
@@ -128,6 +128,58 @@ const Plans = () => {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Oportunidades e Bônus */}
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Card className="card-gradient border-primary/30">
+            <CardHeader>
+              <CardTitle className="text-xl font-heading flex items-center gap-2">
+                <Users className="h-5 w-5 text-primary" />
+                Pacote Família
+              </CardTitle>
+              <CardDescription>Desconto especial para famílias que treinam juntas</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold">2 a 3 pessoas da mesma família</p>
+                    <p className="text-sm text-muted-foreground">R$ 116,90 / pessoa / mês</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold">4 ou mais pessoas da mesma família</p>
+                    <p className="text-sm text-muted-foreground">R$ 100,00 / pessoa / mês</p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="card-gradient border-primary/30">
+            <CardHeader>
+              <CardTitle className="text-xl font-heading flex items-center gap-2">
+                <Star className="h-5 w-5 text-primary" />
+                Pagamento à Vista
+              </CardTitle>
+              <CardDescription>Desconto especial para planos de longo prazo</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <Check className="h-5 w-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold">Pagamento em dinheiro à vista</p>
+                    <p className="text-sm text-muted-foreground">5% de desconto no valor total</p>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         <div className="text-center mt-12">

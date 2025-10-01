@@ -5,23 +5,23 @@ const About = () => {
   const values = [
     {
       icon: <Shield className="h-12 w-12 text-primary" />,
-      title: "Segurança",
-      description: "Ambiente seguro e limpo, com equipamentos sempre revisados e manutenção em dia."
+      title: "Respeito e Inclusão",
+      description: "Ambiente acolhedor para todas as pessoas, independente do nível físico."
     },
     {
       icon: <Users className="h-12 w-12 text-primary" />,
-      title: "Comunidade",
+      title: "Comunidade e Empatia",
       description: "Uma família fitness onde todos se apoiam para alcançar seus objetivos."
     },
     {
       icon: <Trophy className="h-12 w-12 text-primary" />,
-      title: "Resultados",
-      description: "Foco em resultados reais e duradouros com acompanhamento profissional."
+      title: "Comprometimento",
+      description: "Dedicação em ajudar cada pessoa a superar seus desafios pessoais."
     },
     {
       icon: <Heart className="h-12 w-12 text-primary" />,
-      title: "Bem-estar",
-      description: "Cuidamos da sua saúde física e mental de forma integral."
+      title: "Excelência com Simplicidade",
+      description: "Serviços de qualidade com processos simples e acessíveis."
     }
   ];
 
@@ -35,13 +35,12 @@ const About = () => {
               Sobre o <span className="text-gradient">Complexo Fitness</span>
             </h2>
             
-            <p className="text-lg text-muted-foreground mb-6">
-              Há mais de 8 anos transformando vidas em Ubajara, o Complexo Fitness é mais que uma academia - é um espaço de transformação pessoal e conquista de objetivos.
-            </p>
-            
-            <p className="text-lg text-muted-foreground mb-8">
-              Nossa missão é proporcionar um ambiente acolhedor, moderno e completo, onde cada pessoa pode encontrar seu caminho para uma vida mais saudável e ativa.
-            </p>
+            <div className="mb-8">
+              <h3 className="text-2xl font-bold mb-4">Nossa Missão</h3>
+              <p className="text-lg text-muted-foreground">
+                Ajudar pessoas a atingirem sua melhor versão, promovendo saúde física e mental por meio de um estilo de vida ativo, criando uma comunidade focada no bem-estar e na superação de desafios pessoais.
+              </p>
+            </div>
 
             <div className="grid grid-cols-1 gap-6">
               <div className="text-center">
