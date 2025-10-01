@@ -19,7 +19,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-muted-foreground text-sm">
-              Transformando vidas através do fitness há mais de 8 anos em Ubajara.
+              Transformando vidas através do fitness em Ubajara desde outubro de 2024.
             </p>
             <div className="flex space-x-3">
               <div className="bg-primary/10 p-2 rounded-lg hover:bg-primary/20 transition-colors cursor-pointer">

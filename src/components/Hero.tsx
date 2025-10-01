@@ -32,14 +32,6 @@ const Hero = () => {
             Agende uma visita
           </Button>
         </div>
-        
-        {/* Stats - Apenas funcionamento 24h */}
-        <div className="grid grid-cols-1 gap-8 mt-16 pt-16 border-t border-border">
-          <div className="text-center">
-            <div className="text-3xl sm:text-4xl font-bold font-heading text-primary mb-2">24h</div>
-            <div className="text-muted-foreground">Acesso livre aos equipamentos</div>
-          </div>
-        </div>
       </div>
     </section>
   );

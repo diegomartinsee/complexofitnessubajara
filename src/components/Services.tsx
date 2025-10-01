@@ -18,9 +18,9 @@ const Services = () => {
     {
       icon: <Activity className="h-12 w-12 text-primary" />,
       title: "Área Funcional",
-      description: "Espaço preparado para treinos funcionais, circuitos e aulas em grupo",
+      description: "Espaço preparado para treinos funcionais e circuitos completos",
       image: personalTrainingImage,
-      features: ["Treinos funcionais", "Circuitos completos", "Aulas em grupo", "Espaço amplo"]
+      features: ["Treinos funcionais", "Circuitos completos", "Equipamentos variados", "Espaço amplo"]
     },
     {
       icon: <Users className="h-12 w-12 text-primary" />,
@@ -119,7 +119,7 @@ const Services = () => {
         {/* Additional Services */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
           {[
-            { icon: <Timer className="h-8 w-8" />, title: "Horários Flexíveis", desc: "Treinos cedo, tarde e fim de semana" },
+            { icon: <Timer className="h-8 w-8" />, title: "Horários Flexíveis", desc: "Funcionamento amplo para se adaptar à sua rotina" },
             { icon: <Users className="h-8 w-8" />, title: "Personal Trainer", desc: "Acompanhamento profissional" },
             { icon: <Heart className="h-8 w-8" />, title: "Avaliação Física", desc: "Gratuita para novos alunos" },
             { icon: <Activity className="h-8 w-8" />, title: "Aplicativo", desc: "Treino e acompanhamento de evolução" }

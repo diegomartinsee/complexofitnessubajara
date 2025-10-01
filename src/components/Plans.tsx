@@ -7,6 +7,20 @@ import wellhubLogo from "@/assets/wellhub-logo.png";
 const Plans = () => {
   const plans = [
     {
+      name: "Mensal Standard",
+      price: "R$ 129,90",
+      period: "/mês", 
+      description: "Flexibilidade total para sua rotina",
+      features: [
+        "Acesso em todos os horários",
+        "Sem fidelidade",
+        "Acesso completo à musculação",
+        "Área funcional incluída",
+        "Aplicativo de treino"
+      ],
+      popular: true
+    },
+    {
       name: "Mensal Horário Fixo",
       price: "R$ 110",
       period: "/mês", 
@@ -17,7 +31,7 @@ const Plans = () => {
         "Acesso completo à musculação",
         "Taxa R$10 para horário extra"
       ],
-      popular: true
+      popular: false
     },
     {
       name: "Trimestral Standard",
@@ -25,7 +39,7 @@ const Plans = () => {
       period: "/mês",
       description: "Flexibilidade total com parcelamento facilitado",
       features: [
-        "Acesso livre 24h",
+        "Acesso em todos os horários",
         "Parcelamento em até 3x",
         "Valor total: R$ 370,20",
         "Flexibilidade de horários",
@@ -43,7 +57,7 @@ const Plans = () => {
         "Parcelamento em até 6x", 
         "Valor total: R$ 701,40",
         "Desconto progressivo",
-        "Acesso livre 24h"
+        "Acesso em todos os horários"
       ],
       popular: false
     },
