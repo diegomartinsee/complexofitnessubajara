@@ -20,7 +20,7 @@ const Index = () => {
       <Navigation />
       
       <main>
-        {/* 1. Headline + Promessa Forte */}
+        {/* 1. Headline Institucional */}
         <Hero />
         
         {/* 2. Problema / Dor do Visitante */}
@@ -35,11 +35,11 @@ const Index = () => {
         {/* 5. Prova Social (Depoimentos) */}
         <Testimonials />
         
-        {/* 6. Planos e Preços */}
-        <Plans />
-        
-        {/* 7. Clube de Recompensas e Parceiros */}
+        {/* 6. Clube de Recompensas e Parceiros - ANTES dos planos */}
         <Rewards />
+        
+        {/* 7. Planos e Preços */}
+        <Plans />
         
         {/* 8. Garantias e Diferenciais */}
         <Guarantees />
