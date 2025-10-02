@@ -6,6 +6,7 @@ import Benefits from "@/components/Benefits";
 import Testimonials from "@/components/Testimonials";
 import Plans from "@/components/Plans";
 import Rewards from "@/components/Rewards";
+import MiniCTA from "@/components/MiniCTA";
 import Guarantees from "@/components/Guarantees";
 import CTA from "@/components/CTA";
 import FAQ from "@/components/FAQ";
@@ -37,6 +38,9 @@ const Index = () => {
         
         {/* 6. Clube de Recompensas e Parceiros - ANTES dos planos */}
         <Rewards />
+        
+        {/* 6.5 Mini CTA após benefícios */}
+        <MiniCTA />
         
         {/* 7. Planos e Preços */}
         <Plans />

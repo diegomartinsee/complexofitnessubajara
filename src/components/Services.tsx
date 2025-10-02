@@ -87,6 +87,7 @@ const Services = () => {
                   src={service.image} 
                   alt={service.title}
                   className="w-full h-48 object-cover group-hover:scale-110 transition-smooth"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-background/60 flex items-center justify-center">
                   {service.icon}

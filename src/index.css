@@ -125,6 +125,31 @@ All colors MUST be HSL.
   html {
     scroll-behavior: smooth;
   }
+
+  /* Typography Hierarchy */
+  h1 {
+    @apply text-5xl sm:text-6xl lg:text-7xl font-bold font-heading tracking-tight;
+  }
+
+  h2 {
+    @apply text-4xl sm:text-5xl font-bold font-heading tracking-tight;
+  }
+
+  h3 {
+    @apply text-2xl sm:text-3xl font-semibold font-heading;
+  }
+
+  h4 {
+    @apply text-xl sm:text-2xl font-semibold;
+  }
+
+  p.lead {
+    @apply text-xl sm:text-2xl text-muted-foreground;
+  }
+
+  p {
+    @apply text-base leading-relaxed;
+  }
 }
 
 @layer components {
