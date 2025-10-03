@@ -42,6 +42,13 @@ const Services = () => {
       description: "Tratamentos estéticos para complementar seus resultados na academia",
       image: personalTrainingImage,
       features: ["Tratamentos corporais", "Drenagem linfática", "Procedimentos estéticos", "Cuidados especializados"]
+    },
+    {
+      icon: <ShoppingBag className="h-12 w-12 text-primary" />,
+      title: "Fitstore",
+      description: "Loja de suplementos e acessórios para potencializar seus treinos",
+      image: weightsImage,
+      features: ["Suplementos", "Acessórios", "Vestuário fitness", "Consultoria especializada"]
     }
   ];
 
