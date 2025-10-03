@@ -25,8 +25,8 @@ const Guarantees = () => {
     },
     {
       icon: <Baby className="h-10 w-10 text-primary" />,
-      title: "Área Kids Supervisionada",
-      description: "Espaço seguro e monitorado para seus filhos enquanto você treina com tranquilidade."
+      title: "Área Kids",
+      description: "Treine enquanto seus filhos se divertem."
     },
     {
       icon: <Award className="h-10 w-10 text-primary" />,

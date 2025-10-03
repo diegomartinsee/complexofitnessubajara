@@ -72,11 +72,15 @@ const About = () => {
             Nossa <span className="text-gradient">Equipe</span>
           </h3>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { name: "Carlos Silva", role: "Diretor Técnico", cert: "CREF 123456-G/CE" },
-              { name: "Ana Costa", role: "Personal Trainer", cert: "CREF 789012-G/CE" },
-              { name: "João Santos", role: "Educador Físico", cert: "CREF 345678-G/CE" }
+              { name: "Ivan da Cruz", role: "Responsável Técnico", cert: "CREF 000000-G/CE" },
+              { name: "Geazi", role: "Personal Trainer", cert: "CREF 000000-G/CE" },
+              { name: "Dhaima", role: "Personal Trainer", cert: "CREF 000000-G/CE" },
+              { name: "Jaiane", role: "Personal Trainer", cert: "CREF 000000-G/CE" },
+              { name: "João Victor", role: "Personal Trainer", cert: "CREF 000000-G/CE" },
+              { name: "Samille", role: "Personal Trainer", cert: "CREF 000000-G/CE" },
+              { name: "Luiz", role: "Personal Trainer", cert: "CREF 000000-G/CE" }
             ].map((member, index) => (
               <Card key={index} className="card-gradient border-border">
                 <CardContent className="p-6 text-center">
