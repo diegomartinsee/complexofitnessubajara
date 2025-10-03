@@ -1,4 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Gift, TrendingUp, Users, Award } from "lucide-react";
 
 const Rewards = () => {
@@ -24,17 +25,20 @@ const Rewards = () => {
     {
       icon: <Gift className="h-8 w-8 text-primary" />,
       title: "Clube de Recompensas",
-      description: "Programa 'Tá pago!' com vantagens exclusivas"
+      shortDescription: "Programa 'Tá pago!' com vantagens exclusivas",
+      fullDescription: "Na Complexo Fitness, cada treino te aproxima de prêmios e vantagens exclusivas. Troque seus Complexo Coins por consultas, sessões de fisioterapia, produtos da FitStore, bebidas energéticas e muito mais."
     },
     {
       icon: <TrendingUp className="h-8 w-8 text-primary" />,
       title: "Descontos com Parceiros",
-      description: "Benefícios em estabelecimentos parceiros"
+      shortDescription: "Benefícios em estabelecimentos parceiros",
+      fullDescription: "Desfrute de descontos exclusivos em ProLab (15% em exames laboratoriais), Dr. Aristófanes Rocha (10-15% em procedimentos estéticos), BlackFit (10% na loja) e muito mais."
     },
     {
       icon: <Award className="h-8 w-8 text-primary" />,
       title: "App de Treino",
-      description: "Acesso ao aplicativo de treino e acompanhamento"
+      shortDescription: "Acesso ao aplicativo de treino e acompanhamento",
+      fullDescription: "Tenha acesso ao nosso aplicativo exclusivo para acompanhar seus treinos, ver sua evolução, marcar consultas e gerenciar seus Complexo Coins de forma prática e intuitiva."
     }
   ];
 
@@ -50,39 +54,29 @@ const Rewards = () => {
           </p>
         </div>
 
-        {/* Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        {/* Benefits Accordion */}
+        <Accordion type="single" collapsible className="w-full mb-16">
           {benefits.map((benefit, index) => (
-            <Card key={index} className="card-gradient border-border hover:glow-effect transition-smooth text-center">
-              <CardContent className="pt-8 pb-6">
-                <div className="flex justify-center mb-4">
-                  {benefit.icon}
+            <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-lg mb-4 card-gradient">
+              <AccordionTrigger className="px-6 py-4 hover:no-underline group">
+                <div className="flex items-center gap-4 text-left w-full">
+                  <div className="flex-shrink-0 group-hover:scale-110 transition-smooth">
+                    {benefit.icon}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-xl font-semibold mb-1">{benefit.title}</h3>
+                    <p className="text-sm text-muted-foreground">{benefit.shortDescription}</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
-                <p className="text-sm text-muted-foreground">{benefit.description}</p>
-              </CardContent>
-            </Card>
+              </AccordionTrigger>
+              <AccordionContent className="px-6 pb-4">
+                <p className="text-muted-foreground leading-relaxed pl-12">
+                  {benefit.fullDescription}
+                </p>
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
-
-        {/* Clube de Recompensas Card */}
-        <Card className="card-gradient border-primary/30 mb-12">
-          <CardHeader className="text-center">
-            <div className="flex justify-center mb-4">
-              <div className="hero-gradient p-4 rounded-full">
-                <Gift className="h-12 w-12 text-primary-foreground" />
-              </div>
-            </div>
-            <CardTitle className="text-3xl font-heading">
-              Clube de Recompensas <span className="text-gradient">"Tá pago!"</span>
-            </CardTitle>
-            <CardDescription className="text-base mt-4">
-              Na Complexo Fitness, cada treino te aproxima de prêmios e vantagens exclusivas. 
-              Troque seus Complexo Coins por consultas, sessões de fisioterapia, produtos da FitStore, 
-              bebidas energéticas e mais.
-            </CardDescription>
-          </CardHeader>
-        </Card>
+        </Accordion>
 
         {/* Partners Section */}
         <div>

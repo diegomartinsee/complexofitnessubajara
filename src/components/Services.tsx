@@ -75,15 +75,27 @@ const Services = () => {
                 </Badge>
               )}
               
-              <div className="relative overflow-hidden rounded-t-lg">
+              <div className="relative overflow-hidden rounded-t-lg h-48">
                 <img 
                   src={service.image} 
                   alt={service.title}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-smooth"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-smooth"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-background/60 flex items-center justify-center">
+                <div className="absolute inset-0 bg-background/60 flex items-center justify-center group-hover:bg-background/80 transition-smooth">
                   {service.icon}
+                </div>
+                
+                {/* Hover Overlay with Features */}
+                <div className="absolute inset-0 bg-background/95 opacity-0 group-hover:opacity-100 transition-smooth p-6 flex flex-col justify-center">
+                  <ul className="space-y-3">
+                    {service.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center text-sm text-foreground">
+                        <div className="w-2 h-2 bg-primary rounded-full mr-3 flex-shrink-0"></div>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
               
@@ -91,21 +103,10 @@ const Services = () => {
                 <CardTitle className={`text-xl font-heading text-foreground ${service.isPrimary ? 'text-2xl' : ''}`}>
                   {service.title}
                 </CardTitle>
-                <CardDescription className="text-muted-foreground">
+                <CardDescription className="text-muted-foreground line-clamp-1">
                   {service.description}
                 </CardDescription>
               </CardHeader>
-              
-              <CardContent>
-                <ul className="space-y-2">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
-                      <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
             </Card>
           ))}
         </div>

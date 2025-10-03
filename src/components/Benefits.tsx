@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Zap, Heart, Trophy, Sparkles, Brain, Shield } from "lucide-react";
 
 const Benefits = () => {
@@ -47,24 +48,34 @@ const Benefits = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {benefits.map((benefit, index) => (
-            <Card 
-              key={index} 
-              className="card-gradient border-border hover:border-primary/50 hover:glow-effect transition-smooth group"
-            >
-              <CardContent className="pt-8 pb-6 text-center">
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full hero-gradient mb-6 group-hover:scale-110 transition-smooth">
-                  <div className="text-primary-foreground">
-                    {benefit.icon}
-                  </div>
-                </div>
-                <h3 className="text-xl font-semibold mb-3 text-foreground">{benefit.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+        <TooltipProvider>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {benefits.map((benefit, index) => (
+              <Tooltip key={index} delayDuration={200}>
+                <TooltipTrigger asChild>
+                  <Card 
+                    className="card-gradient border-border hover:border-primary/50 hover:glow-effect transition-smooth group cursor-pointer"
+                  >
+                    <CardContent className="pt-8 pb-6 text-center">
+                      <div className="inline-flex items-center justify-center w-20 h-20 rounded-full hero-gradient mb-4 group-hover:scale-110 transition-smooth">
+                        <div className="text-primary-foreground">
+                          {benefit.icon}
+                        </div>
+                      </div>
+                      <h3 className="text-xl font-semibold text-foreground">{benefit.title}</h3>
+                    </CardContent>
+                  </Card>
+                </TooltipTrigger>
+                <TooltipContent 
+                  side="top" 
+                  className="max-w-xs p-4 bg-foreground text-background border-border"
+                >
+                  <p className="text-sm leading-relaxed">{benefit.description}</p>
+                </TooltipContent>
+              </Tooltip>
+            ))}
+          </div>
+        </TooltipProvider>
       </div>
     </section>
   );
