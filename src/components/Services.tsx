@@ -17,31 +17,10 @@ const Services = () => {
     },
     {
       icon: <Activity className="h-12 w-12 text-primary" />,
-      title: "Área Funcional",
-      description: "Espaço preparado para treinos funcionais e circuitos completos",
-      image: personalTrainingImage,
-      features: ["Treinos funcionais", "Circuitos completos", "Equipamentos variados", "Espaço amplo"]
-    },
-    {
-      icon: <Users className="h-12 w-12 text-primary" />,
-      title: "Área Kids",
-      description: "Espaço seguro e monitorado para crianças enquanto você treina",
-      image: cardioImage,
-      features: ["Espaço seguro", "Monitoramento profissional", "Entretenimento garantido", "Tranquilidade para os pais"]
-    },
-    {
-      icon: <Activity className="h-12 w-12 text-primary" />,
       title: "Pilates",
       description: "Fortalecimento do core e melhoria da postura com exercícios controlados",
       image: personalTrainingImage,
       features: ["Exercícios funcionais", "Melhoria da postura", "Fortalecimento do core", "Aulas personalizadas"]
-    },
-    {
-      icon: <Stethoscope className="h-12 w-12 text-primary" />,
-      title: "Fisioterapia",
-      description: "Reabilitação e prevenção de lesões com profissionais especializados",
-      image: cardioImage,
-      features: ["Reabilitação", "Prevenção de lesões", "Avaliação postural", "Tratamento especializado"]
     },
     {
       icon: <Apple className="h-12 w-12 text-primary" />,
@@ -51,11 +30,18 @@ const Services = () => {
       features: ["Avaliação nutricional", "Planos alimentares", "Acompanhamento contínuo", "Orientação especializada"]
     },
     {
-      icon: <ShoppingBag className="h-12 w-12 text-primary" />,
-      title: "FitStore",
-      description: "Loja focada em roupas e acessórios fitness",
+      icon: <Stethoscope className="h-12 w-12 text-primary" />,
+      title: "Fisioterapia",
+      description: "Reabilitação e prevenção de lesões com profissionais especializados",
+      image: cardioImage,
+      features: ["Reabilitação", "Prevenção de lesões", "Avaliação postural", "Tratamento especializado"]
+    },
+    {
+      icon: <Heart className="h-12 w-12 text-primary" />,
+      title: "Estética",
+      description: "Tratamentos estéticos para complementar seus resultados na academia",
       image: personalTrainingImage,
-      features: ["Roupas fitness", "Acessórios de treino", "Preços especiais para alunos", "Produtos de qualidade"]
+      features: ["Tratamentos corporais", "Drenagem linfática", "Procedimentos estéticos", "Cuidados especializados"]
     }
   ];
 
@@ -121,7 +107,7 @@ const Services = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
           {[
             { icon: <Timer className="h-8 w-8" />, title: "Horários Flexíveis", desc: "Funcionamento amplo para se adaptar à sua rotina" },
-            { icon: <Users className="h-8 w-8" />, title: "Personal Trainer", desc: "Acompanhamento profissional" },
+            { icon: <Users className="h-8 w-8" />, title: "Área Kids", desc: "Treine enquanto seus filhos se divertem" },
             { icon: <Heart className="h-8 w-8" />, title: "Avaliação Física", desc: "Gratuita para novos alunos" },
             { icon: <Activity className="h-8 w-8" />, title: "Aplicativo", desc: "Treino e acompanhamento de evolução" }
           ].map((item, index) => (

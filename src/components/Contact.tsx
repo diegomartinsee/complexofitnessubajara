@@ -1,35 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Clock, Instagram, Facebook, Mail } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
+import { Card } from "@/components/ui/card";
+import { MapPin, Phone, Clock, Instagram, Facebook, Mail, MessageCircle } from "lucide-react";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: ""
-  });
-  const { toast } = useToast();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Simulate form submission
-    toast({
-      title: "Mensagem enviada!",
-      description: "Entraremos em contato em breve. Obrigado!",
-    });
-    setFormData({ name: "", email: "", phone: "", message: "" });
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  const handleWhatsAppClick = () => {
+    const phoneNumber = "5588999735251";
+    const message = encodeURIComponent("Olá! Gostaria de conhecer a Complexo Fitness e saber mais sobre os planos.");
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 
   return (
@@ -121,90 +98,45 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
-          <Card className="card-gradient border-border">
-            <CardHeader>
-              <CardTitle className="text-2xl font-heading">Envie uma mensagem</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">
-                      Nome completo *
-                    </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="Seu nome"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                      Telefone *
-                    </label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      required
-                      placeholder="(88) 9 9999-9999"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    E-mail *
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    placeholder="seu@email.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Mensagem *
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    placeholder="Como podemos ajudar você?"
-                    rows={4}
-                  />
-                </div>
-
-                <Button type="submit" className="w-full hero-gradient hover:opacity-90 transition-smooth glow-effect">
-                  Enviar mensagem
-                </Button>
-              </form>
-            </CardContent>
+          {/* WhatsApp CTA Card */}
+          <Card className="card-gradient border-border p-8 flex flex-col items-center justify-center text-center space-y-6">
+            <div className="hero-gradient p-6 rounded-full">
+              <MessageCircle className="h-16 w-16 text-primary-foreground" />
+            </div>
+            <div>
+              <h3 className="text-2xl font-bold font-heading mb-3">Fale Conosco pelo WhatsApp</h3>
+              <p className="text-muted-foreground mb-6">
+                Entre em contato agora mesmo e tire todas as suas dúvidas. 
+                Nossa equipe está pronta para atender você!
+              </p>
+            </div>
+            <Button 
+              size="lg" 
+              className="hero-gradient hover:opacity-90 transition-smooth glow-effect font-semibold w-full"
+              onClick={handleWhatsAppClick}
+            >
+              <MessageCircle className="mr-2 h-5 w-5" />
+              Conversar no WhatsApp
+            </Button>
+            <p className="text-sm text-muted-foreground">
+              Resposta rápida em horário comercial
+            </p>
           </Card>
         </div>
 
-        {/* Map Placeholder */}
+        {/* Google Maps */}
         <div className="mt-16">
           <Card className="card-gradient border-border overflow-hidden">
-            <div className="h-64 bg-muted flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
-                <p className="text-muted-foreground">Localização da Academia</p>
-                <p className="text-sm text-muted-foreground mt-2">Centro de Ubajara - CE</p>
-              </div>
-            </div>
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.123456789012!2d-40.12345678901234!3d-3.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwMDcnMjQuNCJTIDQwwrAwNyczNC40Ilc!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
+              width="100%"
+              height="400"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Localização Complexo Fitness"
+            />
           </Card>
         </div>
       </div>
