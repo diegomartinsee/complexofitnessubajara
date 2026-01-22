@@ -34,19 +34,24 @@ const Navigation = () => {
     setIsMenuOpen(false);
   };
 
+  const handleEnrollClick = () => {
+    const phoneNumber = "5588999735251";
+    const message = encodeURIComponent("Olá, gostaria de fazer minha matrícula");
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-lg' 
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
+        ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-lg'
         : 'bg-transparent'
-    }`}>
+      }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <div className="flex items-center space-x-3">
-            <img 
-              src={logoComplexo} 
-              alt="Complexo Fitness Ubajara" 
+            <img
+              src={logoComplexo}
+              alt="Complexo Fitness Ubajara"
               className="h-10 w-auto"
             />
           </div>
@@ -62,7 +67,10 @@ const Navigation = () => {
                 {item.name}
               </button>
             ))}
-            <Button className="hero-gradient hover:opacity-90 transition-smooth">
+            <Button
+              className="hero-gradient hover:opacity-90 transition-smooth"
+              onClick={handleEnrollClick}
+            >
               Matricule-se
             </Button>
           </div>
@@ -93,7 +101,10 @@ const Navigation = () => {
                 </button>
               ))}
               <div className="pt-3">
-                <Button className="w-full hero-gradient hover:opacity-90 transition-smooth">
+                <Button
+                  className="w-full hero-gradient hover:opacity-90 transition-smooth"
+                  onClick={handleEnrollClick}
+                >
                   Matricule-se
                 </Button>
               </div>
