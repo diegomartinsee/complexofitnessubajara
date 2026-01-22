@@ -19,35 +19,35 @@ const Services = () => {
       icon: <Activity className="h-12 w-12 text-primary" />,
       title: "Pilates",
       description: "Fortalecimento do core e melhoria da postura com exercícios controlados",
-      image: personalTrainingImage,
+      image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=800",
       features: ["Exercícios funcionais", "Melhoria da postura", "Fortalecimento do core", "Aulas personalizadas"]
     },
     {
       icon: <Apple className="h-12 w-12 text-primary" />,
       title: "Nutrição",
       description: "Orientação nutricional personalizada para potencializar seus resultados",
-      image: weightsImage,
+      image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=800",
       features: ["Avaliação nutricional", "Planos alimentares", "Acompanhamento contínuo", "Orientação especializada"]
     },
     {
       icon: <Stethoscope className="h-12 w-12 text-primary" />,
       title: "Fisioterapia",
       description: "Reabilitação e prevenção de lesões com profissionais especializados",
-      image: cardioImage,
+      image: "https://images.unsplash.com/photo-1576091160550-2187d80afea2?auto=format&fit=crop&q=80&w=800",
       features: ["Reabilitação", "Prevenção de lesões", "Avaliação postural", "Tratamento especializado"]
     },
     {
       icon: <Heart className="h-12 w-12 text-primary" />,
       title: "Estética",
       description: "Tratamentos estéticos para complementar seus resultados na academia",
-      image: personalTrainingImage,
+      image: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&q=80&w=800",
       features: ["Tratamentos corporais", "Drenagem linfática", "Procedimentos estéticos", "Cuidados especializados"]
     },
     {
       icon: <ShoppingBag className="h-12 w-12 text-primary" />,
       title: "Fitstore",
       description: "Loja de suplementos e acessórios para potencializar seus treinos",
-      image: weightsImage,
+      image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800",
       features: ["Suplementos", "Acessórios", "Vestuário fitness", "Consultoria especializada"]
     }
   ];
@@ -66,18 +66,17 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className={`card-gradient border-border hover:glow-effect transition-smooth group relative ${
-              service.isPrimary ? 'lg:col-span-2 ring-2 ring-primary/30' : ''
-            }`}>
+            <Card key={index} className={`card-gradient border-border hover:glow-effect transition-smooth group relative ${service.isPrimary ? 'lg:col-span-2 ring-2 ring-primary/30' : ''
+              }`}>
               {service.isPrimary && (
                 <Badge className="absolute top-4 right-4 z-10 hero-gradient text-primary-foreground">
                   Serviço Principal
                 </Badge>
               )}
-              
+
               <div className="relative overflow-hidden rounded-t-lg h-48">
-                <img 
-                  src={service.image} 
+                <img
+                  src={service.image}
                   alt={service.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-smooth"
                   loading="lazy"
@@ -85,7 +84,7 @@ const Services = () => {
                 <div className="absolute inset-0 bg-background/60 flex items-center justify-center group-hover:bg-background/80 transition-smooth">
                   {service.icon}
                 </div>
-                
+
                 {/* Hover Overlay with Features */}
                 <div className="absolute inset-0 bg-background/95 opacity-0 group-hover:opacity-100 transition-smooth p-6 flex flex-col justify-center">
                   <ul className="space-y-3">
@@ -98,7 +97,7 @@ const Services = () => {
                   </ul>
                 </div>
               </div>
-              
+
               <CardHeader>
                 <CardTitle className={`text-xl font-heading text-foreground ${service.isPrimary ? 'text-2xl' : ''}`}>
                   {service.title}
