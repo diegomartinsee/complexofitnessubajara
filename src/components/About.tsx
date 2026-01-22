@@ -34,7 +34,7 @@ const About = () => {
             <h2 className="text-4xl sm:text-5xl font-bold font-heading mb-6">
               Sobre o <span className="text-gradient">Complexo Fitness</span>
             </h2>
-            
+
             <div className="mb-8">
               <h3 className="text-2xl font-bold mb-4">Nossa Missão</h3>
               <p className="text-lg text-muted-foreground">
@@ -66,7 +66,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* Team Section */}
+        {/* Team Section
         <div className="mt-20 text-center">
           <h3 className="text-3xl font-bold font-heading mb-8">
             Nossa <span className="text-gradient">Equipe</span>
@@ -95,6 +95,8 @@ const About = () => {
             ))}
           </div>
         </div>
+        */}
+        <section></section>
       </div>
     </section>
   );
