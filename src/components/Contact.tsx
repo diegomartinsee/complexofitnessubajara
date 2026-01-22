@@ -75,7 +75,7 @@ const Contact = () => {
                   <div>
                     <h4 className="font-semibold mb-1">E-mail</h4>
                     <p className="text-muted-foreground">
-                      contato@complexofitness.com.br
+                      complexofitnessubj@gmail.com
                     </p>
                   </div>
                 </div>
