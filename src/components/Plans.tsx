@@ -18,7 +18,7 @@ const Plans = () => {
         "Área funcional incluída",
         "Aplicativo de treino"
       ],
-      popular: true
+      popular: false
     },
     {
       name: "Mensal Horário Fixo",
@@ -76,7 +76,7 @@ const Plans = () => {
         "Investimento na sua saúde",
         "Até 30 dias de congelamento livre"
       ],
-      popular: false
+      popular: true
     }
   ];
 
