@@ -13,10 +13,6 @@ const FAQ = () => {
       answer: "Não! Na Complexo Fitness você não paga taxa de matrícula. Comece a treinar pagando apenas a mensalidade do plano escolhido."
     },
     {
-      question: "Posso cancelar minha matrícula quando quiser?",
-      answer: "Depende do tipo de plano contratado. No plano sem recorrência (pagamento integral), o valor é pago antecipadamente, não há ressarcimento em caso de não uso, mas o contrato pode ser transferido ou vendido conforme regras da academia. Já no plano recorrente, há fidelidade e, em caso de cancelamento antecipado, é aplicada multa de 20% sobre o valor restante do contrato, não sendo permitida a transferência ou venda."
-    },
-    {
       question: "Como eu consigo desconto nos parceiros?",
       answer: "Basta apresentar o aplicativo da academia, comprovando que seu plano está ativo. Com isso, você recebe o desconto nos serviços ou produtos oferecidos pelos nossos parceiros."
     },
