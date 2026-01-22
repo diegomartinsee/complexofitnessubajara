@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { MapPin, Phone, Clock, Instagram, Facebook, Mail, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Clock, Instagram, Mail, MessageCircle } from "lucide-react";
 
 const Contact = () => {
   const handleWhatsAppClick = () => {
@@ -86,13 +86,14 @@ const Contact = () => {
             <div>
               <h4 className="font-semibold mb-4">Siga-nos nas redes sociais</h4>
               <div className="flex gap-4">
-                <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  onClick={() => window.open('https://www.instagram.com/complexofitnessubj?igsh=MTV4am9mcWdpNzJsaQ%3D%3D&utm_source=qr', '_blank')}
+                >
                   <Instagram className="h-4 w-4 mr-2" />
                   Instagram
-                </Button>
-                <Button variant="outline" size="sm" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                  <Facebook className="h-4 w-4 mr-2" />
-                  Facebook
                 </Button>
               </div>
             </div>
