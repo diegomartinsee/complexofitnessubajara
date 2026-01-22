@@ -26,7 +26,7 @@ const Contact = () => {
           <div className="space-y-8">
             <div>
               <h3 className="text-2xl font-bold font-heading mb-6">Informações de Contato</h3>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="hero-gradient p-3 rounded-lg">
@@ -106,12 +106,12 @@ const Contact = () => {
             <div>
               <h3 className="text-2xl font-bold font-heading mb-3">Fale Conosco pelo WhatsApp</h3>
               <p className="text-muted-foreground mb-6">
-                Entre em contato agora mesmo e tire todas as suas dúvidas. 
+                Entre em contato agora mesmo e tire todas as suas dúvidas.
                 Nossa equipe está pronta para atender você!
               </p>
             </div>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="hero-gradient hover:opacity-90 transition-smooth glow-effect font-semibold w-full"
               onClick={handleWhatsAppClick}
             >
@@ -127,8 +127,8 @@ const Contact = () => {
         {/* Google Maps */}
         <div className="mt-16">
           <Card className="card-gradient border-border overflow-hidden">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.123456789012!2d-40.12345678901234!3d-3.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM8KwMDcnMjQuNCJTIDQwwrAwNyczNC40Ilc!5e0!3m2!1spt-BR!2sbr!4v1234567890123!5m2!1spt-BR!2sbr"
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3980.7983457365913!2d-40.9226058!3d-3.8534132000000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x794cb9ebda54191%3A0xd73eddf3befa02f0!2sComplexo%20Fitness%20Ubajara!5e0!3m2!1spt-BR!2sbr!4v1769097309899!5m2!1spt-BR!2sbr"
               width="100%"
               height="400"
               style={{ border: 0 }}
