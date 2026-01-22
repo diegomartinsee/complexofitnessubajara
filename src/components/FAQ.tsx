@@ -14,12 +14,13 @@ const FAQ = () => {
     },
     {
       question: "Posso cancelar minha matrícula quando quiser?",
-      answer: "Sim! Nossos planos não têm fidelidade. Você tem total liberdade para cancelar quando desejar, sem multas ou burocracias."
+      answer: "Depende do tipo de plano contratado. No plano sem recorrência (pagamento integral), o valor é pago antecipadamente, não há ressarcimento em caso de não uso, mas o contrato pode ser transferido ou vendido conforme regras da academia. Já no plano recorrente, há fidelidade e, em caso de cancelamento antecipado, é aplicada multa de 20% sobre o valor restante do contrato, não sendo permitida a transferência ou venda."
     },
     {
-      question: "Quais são os horários de funcionamento?",
-      answer: "Segunda a sexta: 05:30 – 22:00 | Sábado: 06:00 – 12:00 | Domingo: 08:00 – 12:00"
+      question: "Como eu consigo desconto nos parceiros?",
+      answer: "Basta apresentar o aplicativo da academia, comprovando que seu plano está ativo. Com isso, você recebe o desconto nos serviços ou produtos oferecidos pelos nossos parceiros."
     },
+
     {
       question: "A academia oferece avaliação física?",
       answer: "Sim! Oferecemos avaliação física gratuita para todos os novos alunos, com análise corporal completa e orientação personalizada."
@@ -46,7 +47,7 @@ const FAQ = () => {
     },
     {
       question: "Posso fazer uma aula experimental antes de me matricular?",
-      answer: "Com certeza! Agende uma visita gratuita pelo WhatsApp (88) 99973-5251 e conheça toda nossa estrutura sem compromisso."
+      answer: "Atualmente não trabalhamos com aula experimental. Oferecemos a opção de diária, e caso o aluno realize a diária e decida se matricular no mesmo dia, o valor pago pela diária pode ser descontado da mensalidade."
     }
   ];
 
@@ -64,8 +65,8 @@ const FAQ = () => {
 
         <Accordion type="single" collapsible className="w-full space-y-4">
           {faqs.map((faq, index) => (
-            <AccordionItem 
-              key={index} 
+            <AccordionItem
+              key={index}
               value={`item-${index}`}
               className="card-gradient border border-border rounded-lg px-6 hover:border-primary/50 transition-smooth"
             >
@@ -83,7 +84,7 @@ const FAQ = () => {
           <p className="text-muted-foreground mb-4">
             Não encontrou a resposta que procurava?
           </p>
-          <Button 
+          <Button
             className="hero-gradient hover:opacity-90 transition-smooth"
             onClick={() => window.open('https://wa.me/5588999735251', '_blank')}
           >

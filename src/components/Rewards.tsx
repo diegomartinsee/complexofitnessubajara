@@ -18,6 +18,11 @@ const Rewards = () => {
       name: "BlackFit",
       discount: "10% de desconto",
       description: "Produtos na loja"
+    },
+    {
+      name: "Terra Verde",
+      discount: "10% de desconto",
+      description: "Produtos na loja"
     }
   ];
 
@@ -83,7 +88,7 @@ const Rewards = () => {
           <h3 className="text-3xl font-bold font-heading text-center mb-8">
             <span className="text-gradient">Parceiros</span> e Benefícios
           </h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {partners.map((partner, index) => (
               <Card key={index} className="card-gradient border-border hover:border-primary/50 transition-smooth">

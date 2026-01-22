@@ -15,10 +15,10 @@ const MiniCTA = () => {
           Pronto para começar sua <span className="text-gradient">transformação?</span>
         </h3>
         <p className="text-lg text-muted-foreground mb-8">
-          Agende sua visita gratuita e conheça nossa estrutura completa
+          Fale com a gente agora e dê o primeiro passo da sua transformação!
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button 
+          <Button
             size="lg"
             className="hero-gradient hover:opacity-90 transition-smooth glow-effect font-semibold"
             onClick={handleWhatsAppClick}
@@ -26,7 +26,7 @@ const MiniCTA = () => {
             Agendar visita gratuita
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
-          <Button 
+          <Button
             variant="outline"
             size="lg"
             className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth font-semibold"

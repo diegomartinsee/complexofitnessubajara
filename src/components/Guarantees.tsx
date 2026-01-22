@@ -10,8 +10,8 @@ const Guarantees = () => {
     },
     {
       icon: <Shield className="h-10 w-10 text-primary" />,
-      title: "Planos Sem Fidelidade",
-      description: "Liberdade total para você. Cancele quando quiser, sem multas ou burocracias."
+      title: "Liberdade de Escolha",
+      description: "Planos flexíveis, benefícios exclusivos, estrutura completa e vantagens com parceiros para você treinar do seu jeito."
     },
     {
       icon: <UserCheck className="h-10 w-10 text-primary" />,

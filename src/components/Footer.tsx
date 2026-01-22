@@ -48,8 +48,10 @@ const Footer = () => {
             <h4 className="font-semibold text-lg">Nossos Serviços</h4>
             <ul className="space-y-2 text-muted-foreground text-sm">
               <li>Musculação</li>
+              <li>Pilates</li>
               <li>Cardio</li>
-              <li>Aulas em Grupo</li>
+              <li>Fisioterapia</li>
+              <li>Nutrição</li>
               <li>Personal Trainer</li>
               <li>Avaliação Física</li>
             </ul>
