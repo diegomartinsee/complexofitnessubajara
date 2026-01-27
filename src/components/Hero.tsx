@@ -28,7 +28,7 @@ const Hero = () => {
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center reveal">
           <Button
             size="lg"
-            className="hero-gradient hover:opacity-90 transition-smooth text-lg px-12 py-7 glow-effect font-bold rounded-2xl"
+            className="hero-gradient hover:opacity-90 transition-smooth text-lg px-12 py-7 glow-effect font-bold rounded-2xl animate-pulse-cta"
             onClick={() => document.querySelector('#planos')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Escolher meu plano

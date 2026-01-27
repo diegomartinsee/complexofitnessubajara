@@ -224,6 +224,10 @@ All colors MUST be HSL.
     opacity: 1;
     transform: translateY(0);
   }
+
+  .animate-pulse-cta {
+    animation: pulse-cta 2s infinite;
+  }
 }
 
 @layer utilities {
@@ -257,5 +261,22 @@ All colors MUST be HSL.
 
   50% {
     box-shadow: 0 0 40px hsl(108 83% 43% / 0.6);
+  }
+}
+
+@keyframes pulse-cta {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(84, 189, 27, 0.4);
+  }
+
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 15px rgba(84, 189, 27, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(84, 189, 27, 0);
   }
 }
