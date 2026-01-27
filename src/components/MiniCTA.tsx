@@ -3,7 +3,7 @@ import { ArrowRight, Phone } from "lucide-react";
 
 const MiniCTA = () => {
   const handleWhatsAppClick = () => {
-    const phoneNumber = "5588999999999"; // Número da academia
+    const phoneNumber = "5588999735251";
     const message = encodeURIComponent("Olá! Gostaria de conhecer os planos e benefícios da Complexo Fitness.");
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
@@ -23,7 +23,7 @@ const MiniCTA = () => {
             className="hero-gradient hover:opacity-90 transition-smooth glow-effect font-semibold"
             onClick={handleWhatsAppClick}
           >
-            Agendar visita gratuita
+            EU QUERO
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
           <Button
@@ -33,7 +33,7 @@ const MiniCTA = () => {
             onClick={handleWhatsAppClick}
           >
             <Phone className="mr-2 h-5 w-5" />
-            (88) 9 9999-9999
+            (88) 99973-5251
           </Button>
         </div>
       </div>

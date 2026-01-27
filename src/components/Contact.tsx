@@ -17,7 +17,7 @@ const Contact = () => {
             Entre em <span className="text-gradient">Contato</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Visite nossa academia, tire suas dúvidas ou agende sua avaliação gratuita
+            Visite nossa academia e tire suas dúvidas.
           </p>
         </div>
 

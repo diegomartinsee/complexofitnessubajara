@@ -5,36 +5,36 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "Maria Silva",
-      age: 34,
-      result: "Perdeu 12kg em 4 meses",
-      text: "A Complexo Fitness mudou minha vida! Os professores são atenciosos e a estrutura é impecável. Consegui emagrecer e me sinto muito mais disposta.",
+      name: "Lucas Oliveira",
+      age: 22,
+      result: "Meteu o shape: +8kg de massa",
+      text: "Vim focado em ganhar corpo e a galera deu o maior suporte. A vibe aqui é animal e motiva demais quem tá começando agora!",
       rating: 5,
-      initials: "MS"
+      initials: "LO"
     },
     {
-      name: "João Santos",
-      age: 42,
-      result: "Ganhou massa muscular",
-      text: "Treino aqui há 6 meses e os resultados são incríveis. O acompanhamento personalizado faz toda a diferença. Recomendo demais!",
+      name: "Juliana Costa",
+      age: 35,
+      result: "Sente-se em casa",
+      text: "O que mais me encantou foi a estrutura impecável e a organização. Como mulher, me sinto extremamente segura e à vontade para treinar em qualquer horário.",
       rating: 5,
-      initials: "JS"
+      initials: "JC"
     },
     {
-      name: "Ana Paula",
-      age: 28,
-      result: "Melhorou a saúde",
-      text: "Depois que comecei na Complexo, minha qualidade de vida mudou completamente. Durmo melhor, tenho mais energia e me sinto confiante.",
+      name: "Roberto Mendes",
+      age: 45,
+      result: "Reduziu o percentual de gordura",
+      text: "A estrutura e o suporte da Complexo foram fundamentais para me manter motivado e focado nos treinos. Resultados reais com um acompanhamento de excelência.",
       rating: 5,
-      initials: "AP"
+      initials: "RM"
     },
     {
-      name: "Carlos Eduardo",
-      age: 51,
-      result: "Recuperou o condicionamento",
-      text: "Estava sedentário há anos. A equipe me acolheu e me ajudou a voltar aos treinos sem pressa. Hoje me sinto 10 anos mais jovem!",
+      name: "Sr. Joaquim",
+      age: 72,
+      result: "Recuperou a mobilidade",
+      text: "Achei que academia não era mais para mim, mas fui muito bem acolhido. Hoje não sinto mais dores e tenho muito mais disposição no meu dia a dia.",
       rating: 5,
-      initials: "CE"
+      initials: "SJ"
     }
   ];
 
@@ -62,11 +62,11 @@ const Testimonials = () => {
                     ))}
                   </div>
                 </div>
-                
+
                 <p className="text-muted-foreground mb-6 leading-relaxed italic">
                   "{testimonial.text}"
                 </p>
-                
+
                 <div className="flex items-center gap-4 pt-4 border-t border-border">
                   <Avatar className="h-12 w-12 bg-primary/20 border-2 border-primary/50">
                     <AvatarFallback className="bg-primary/10 text-primary font-semibold">

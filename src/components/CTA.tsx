@@ -12,33 +12,33 @@ const CTA = () => {
         <div className="card-gradient border-primary/30 rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden">
           {/* Background gradient effect */}
           <div className="absolute inset-0 hero-gradient opacity-10"></div>
-          
+
           <div className="relative z-10">
             <h2 className="text-4xl sm:text-5xl font-bold font-heading mb-6">
               Pronto para <span className="text-gradient">transformar sua vida</span>?
             </h2>
-            
+
             <p className="text-xl text-muted-foreground mb-4">
               Não deixe para amanhã a mudança que você pode começar hoje.
             </p>
-            
+
             <p className="text-lg text-foreground font-semibold mb-8">
-              Agende agora mesmo uma visita gratuita e conheça toda nossa estrutura!
+              Agende agora mesmo uma visita e conheça toda nossa estrutura!
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="hero-gradient hover:opacity-90 transition-smooth text-xl px-12 py-7 glow-effect font-bold group"
                 onClick={handleWhatsAppClick}
               >
                 Quero começar agora
                 <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
               </Button>
-              
-              <Button 
-                variant="outline" 
-                size="lg" 
+
+              <Button
+                variant="outline"
+                size="lg"
                 className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-smooth text-xl px-12 py-7"
                 onClick={handleWhatsAppClick}
               >
