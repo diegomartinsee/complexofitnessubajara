@@ -47,7 +47,7 @@ All colors MUST be HSL.
     --card-gradient: linear-gradient(145deg, hsl(0 0% 7%), hsl(0 0% 10%));
     --glow-shadow: 0 0 30px hsl(108 83% 43% / 0.3);
     --hero-shadow: 0 20px 60px hsl(108 83% 43% / 0.4);
-    
+
     /* Animation variables */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -128,19 +128,19 @@ All colors MUST be HSL.
 
   /* Typography Hierarchy */
   h1 {
-    @apply text-5xl sm:text-6xl lg:text-7xl font-bold font-heading tracking-tight;
+    @apply text-5xl sm:text-6xl lg:text-8xl font-black font-heading tracking-tighter leading-tight;
   }
 
   h2 {
-    @apply text-4xl sm:text-5xl font-bold font-heading tracking-tight;
+    @apply text-4xl sm:text-5xl lg:text-6xl font-black font-heading tracking-tight;
   }
 
   h3 {
-    @apply text-2xl sm:text-3xl font-semibold font-heading;
+    @apply text-xl sm:text-2xl font-bold font-body;
   }
 
   h4 {
-    @apply text-xl sm:text-2xl font-semibold;
+    @apply text-lg sm:text-xl font-bold;
   }
 
   p.lead {
@@ -153,6 +153,7 @@ All colors MUST be HSL.
 }
 
 @layer components {
+
   /* Custom component classes */
   .hero-gradient {
     background: var(--hero-gradient);
@@ -195,9 +196,12 @@ All colors MUST be HSL.
 
   /* Chatbot message formatting */
   .message-text {
-    white-space: pre-wrap;   /* respeita quebras de linha \n */
-    word-break: break-word;  /* evita overflow horizontal, quebra palavras longas */
-    line-height: 1.4;        /* aumenta espaçamento entre linhas */
+    white-space: pre-wrap;
+    /* respeita quebras de linha \n */
+    word-break: break-word;
+    /* evita overflow horizontal, quebra palavras longas */
+    line-height: 1.4;
+    /* aumenta espaçamento entre linhas */
     margin: 0.2rem 0;
   }
 
@@ -208,6 +212,17 @@ All colors MUST be HSL.
 
   .animate-pulse-glow {
     animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -222,15 +237,25 @@ All colors MUST be HSL.
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { 
+
+  0%,
+  100% {
     box-shadow: 0 0 20px hsl(108 83% 43% / 0.3);
   }
-  50% { 
+
+  50% {
     box-shadow: 0 0 40px hsl(108 83% 43% / 0.6);
   }
 }

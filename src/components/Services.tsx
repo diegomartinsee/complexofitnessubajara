@@ -1,12 +1,12 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Dumbbell, Heart, Users, Timer, Activity, Stethoscope, Apple, ShoppingBag } from "lucide-react";
+import { Dumbbell, Heart, Users, Timer, Activity, Stethoscope, Apple, ShoppingBag, Check } from "lucide-react";
 import weightsImage from "@/assets/weights.jpg";
 import pilatesImage from "@/assets/pilates.png";
 import nutritionImage from "@/assets/nutrition.png";
 import physiotherapyImage from "@/assets/physiotherapy.png";
-import aestheticsImage from "@/assets/aesthetics.png";
-import fitstoreImage from "@/assets/fitstore.png";
+import aestheticsImage from "@/assets/aesthetics.jpg";
+import fitstoreImage from "@/assets/fitstore.jpg";
 
 const Services = () => {
   const services = [
@@ -69,7 +69,7 @@ const Services = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className={`card-gradient border-border hover:glow-effect transition-smooth group relative ${service.isPrimary ? 'lg:col-span-2 ring-2 ring-primary/30' : ''
+            <Card key={index} className={`card-gradient border-border hover:glow-effect transition-smooth group relative reveal ${service.isPrimary ? 'lg:col-span-2 ring-2 ring-primary/30 active' : ''
               }`}>
               {service.isPrimary && (
                 <Badge className="absolute top-4 right-4 z-10 hero-gradient text-primary-foreground">
@@ -77,19 +77,21 @@ const Services = () => {
                 </Badge>
               )}
 
-              <div className="relative overflow-hidden rounded-t-lg h-48">
+              <div className="relative overflow-hidden rounded-t-lg h-56">
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-smooth"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-smooth"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-background/60 flex items-center justify-center group-hover:bg-background/80 transition-smooth">
-                  {service.icon}
+                <div className="absolute inset-0 bg-background/40 flex items-center justify-center group-hover:bg-background/20 transition-smooth">
+                  <div className="bg-background/80 p-4 rounded-full backdrop-blur-sm border border-primary/20">
+                    {service.icon}
+                  </div>
                 </div>
 
-                {/* Hover Overlay with Features */}
-                <div className="absolute inset-0 bg-background/95 opacity-0 group-hover:opacity-100 transition-smooth p-6 flex flex-col justify-center">
+                {/* Desktop Hover Overlay with Features */}
+                <div className="absolute inset-0 bg-background/95 opacity-0 group-hover:opacity-100 transition-smooth p-6 hidden md:flex flex-col justify-center">
                   <ul className="space-y-3">
                     {service.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center text-sm text-foreground">
@@ -105,9 +107,21 @@ const Services = () => {
                 <CardTitle className={`text-xl font-heading text-foreground ${service.isPrimary ? 'text-2xl' : ''}`}>
                   {service.title}
                 </CardTitle>
-                <CardDescription className="text-muted-foreground line-clamp-1">
+                <CardDescription className="text-muted-foreground">
                   {service.description}
                 </CardDescription>
+
+                {/* Mobile visible features */}
+                <div className="mt-4 md:hidden">
+                  <ul className="grid grid-cols-1 gap-2">
+                    {service.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center text-xs text-muted-foreground">
+                        <Check className="w-3 h-3 text-primary mr-2 flex-shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </CardHeader>
             </Card>
           ))}
