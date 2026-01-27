@@ -2,8 +2,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Dumbbell, Heart, Users, Timer, Activity, Stethoscope, Apple, ShoppingBag } from "lucide-react";
 import weightsImage from "@/assets/weights.jpg";
-import cardioImage from "@/assets/cardio.jpg";
-import personalTrainingImage from "@/assets/personal-training.jpg";
+import pilatesImage from "@/assets/pilates.png";
+import nutritionImage from "@/assets/nutrition.png";
+import physiotherapyImage from "@/assets/physiotherapy.png";
+import aestheticsImage from "@/assets/aesthetics.png";
+import fitstoreImage from "@/assets/fitstore.png";
 
 const Services = () => {
   const services = [
@@ -19,35 +22,35 @@ const Services = () => {
       icon: <Activity className="h-12 w-12 text-primary" />,
       title: "Pilates",
       description: "Fortalecimento do core e melhoria da postura com exercícios controlados",
-      image: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=800",
+      image: pilatesImage,
       features: ["Exercícios funcionais", "Melhoria da postura", "Fortalecimento do core", "Aulas personalizadas"]
     },
     {
       icon: <Apple className="h-12 w-12 text-primary" />,
       title: "Nutrição",
       description: "Orientação nutricional personalizada para potencializar seus resultados",
-      image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=800",
+      image: nutritionImage,
       features: ["Avaliação nutricional", "Planos alimentares", "Acompanhamento contínuo", "Orientação especializada"]
     },
     {
       icon: <Stethoscope className="h-12 w-12 text-primary" />,
       title: "Fisioterapia",
       description: "Reabilitação e prevenção de lesões com profissionais especializados",
-      image: "https://images.unsplash.com/photo-1576091160550-2187d80afea2?auto=format&fit=crop&q=80&w=800",
+      image: physiotherapyImage,
       features: ["Reabilitação", "Prevenção de lesões", "Avaliação postural", "Tratamento especializado"]
     },
     {
       icon: <Heart className="h-12 w-12 text-primary" />,
       title: "Estética",
       description: "Tratamentos estéticos para complementar seus resultados na academia",
-      image: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&q=80&w=800",
+      image: aestheticsImage,
       features: ["Tratamentos corporais", "Drenagem linfática", "Procedimentos estéticos", "Cuidados especializados"]
     },
     {
       icon: <ShoppingBag className="h-12 w-12 text-primary" />,
       title: "Fitstore",
       description: "Loja de suplementos e acessórios para potencializar seus treinos",
-      image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800",
+      image: fitstoreImage,
       features: ["Suplementos", "Acessórios", "Vestuário fitness", "Consultoria especializada"]
     }
   ];
