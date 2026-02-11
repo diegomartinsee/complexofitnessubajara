@@ -16,15 +16,30 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navigation = [
+  interface NavItem {
+    name: string;
+    href: string;
+    isExternal?: boolean;
+    className?: string;
+  }
+
+  const navigation: NavItem[] = [
     { name: 'Início', href: '#' },
     { name: 'Serviços', href: '#servicos' },
     { name: 'Planos', href: '#planos' },
     { name: 'Sobre', href: '#sobre' },
-    { name: 'Contato', href: '#contato' }
+    { name: 'Contato', href: '#contato' },
+    { name: 'Sugestões', href: 'https://forms.gle/9C3u9gAqq5AudtUeA', isExternal: true, className: "text-primary font-bold hover:text-primary/80" },
+    { name: 'Ouvidoria', href: 'https://forms.gle/tEBfZsfsWimjQ7YTA', isExternal: true, className: "text-primary font-bold hover:text-primary/80" }
   ];
 
-  const scrollToSection = (href: string) => {
+  const handleNavigation = (href: string, isExternal?: boolean) => {
+    if (isExternal) {
+      window.open(href, '_blank');
+      setIsMenuOpen(false);
+      return;
+    }
+
     if (href === '#') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
@@ -42,8 +57,8 @@ const Navigation = () => {
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled
-        ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-lg'
-        : 'bg-transparent'
+      ? 'bg-background/95 backdrop-blur-md border-b border-border shadow-lg'
+      : 'bg-transparent'
       }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
@@ -61,8 +76,8 @@ const Navigation = () => {
             {navigation.map((item) => (
               <button
                 key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                onClick={() => handleNavigation(item.href, item.isExternal)}
+                className={`transition-colors font-medium ${item.className || 'text-foreground hover:text-primary'}`}
               >
                 {item.name}
               </button>
@@ -94,8 +109,11 @@ const Navigation = () => {
               {navigation.map((item) => (
                 <button
                   key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  className="block w-full text-left px-3 py-2 text-foreground hover:text-primary hover:bg-muted/50 rounded-md transition-colors"
+                  onClick={() => handleNavigation(item.href, item.isExternal)}
+                  className={`block w-full text-left px-3 py-2 rounded-md transition-colors ${item.className
+                    ? `${item.className} hover:bg-muted/50`
+                    : 'text-foreground hover:text-primary hover:bg-muted/50'
+                    }`}
                 >
                   {item.name}
                 </button>
