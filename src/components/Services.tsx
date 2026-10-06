@@ -1,8 +1,5 @@
-import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { Dumbbell, Heart, Users, Timer, Activity, Stethoscope, Apple, ShoppingBag, Check, Play, ExternalLink } from "lucide-react";
 import weightsImage from "@/assets/weights.jpg";
 import pilatesImage from "@/assets/pilates.png";
@@ -19,12 +16,9 @@ interface ServiceItem {
   isPrimary?: boolean;
   features: string[];
   videoUrl?: string;
-  embedUrl?: string;
 }
 
 const Services = () => {
-  const [activeVideo, setActiveVideo] = useState<{ title: string; url: string; embedUrl: string } | null>(null);
-
   const services: ServiceItem[] = [
     {
       icon: <Dumbbell className="h-12 w-12 text-primary" />,
@@ -33,8 +27,7 @@ const Services = () => {
       image: weightsImage,
       isPrimary: true,
       features: ["Aparelhos premium", "Linha completa de pesos livres", "Equipamentos de última geração", "Horários flexíveis"],
-      videoUrl: "https://www.instagram.com/reel/DalaPWrK4CW/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==",
-      embedUrl: "https://www.instagram.com/reel/DalaPWrK4CW/embed"
+      videoUrl: "https://www.instagram.com/reel/DalaPWrK4CW/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=="
     },
     {
       icon: <Activity className="h-12 w-12 text-primary" />,
@@ -42,8 +35,7 @@ const Services = () => {
       description: "Fortalecimento do core e melhoria da postura com exercícios controlados",
       image: pilatesImage,
       features: ["Exercícios funcionais", "Melhoria da postura", "Fortalecimento do core", "Aulas personalizadas"],
-      videoUrl: "https://www.instagram.com/reel/DF8BA96x7NP/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==",
-      embedUrl: "https://www.instagram.com/reel/DF8BA96x7NP/embed"
+      videoUrl: "https://www.instagram.com/reel/DF8BA96x7NP/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=="
     },
     {
       icon: <Apple className="h-12 w-12 text-primary" />,
@@ -51,8 +43,7 @@ const Services = () => {
       description: "Orientação nutricional personalizada para potencializar seus resultados",
       image: nutritionImage,
       features: ["Avaliação nutricional", "Planos alimentares", "Acompanhamento contínuo", "Orientação especializada"],
-      videoUrl: "https://www.instagram.com/reel/DJ9vYx8gv_e/",
-      embedUrl: "https://www.instagram.com/reel/DJ9vYx8gv_e/embed"
+      videoUrl: "https://www.instagram.com/reel/DJ9vYx8gv_e/"
     },
     {
       icon: <Stethoscope className="h-12 w-12 text-primary" />,
@@ -74,8 +65,7 @@ const Services = () => {
       description: "Loja de suplementos e acessórios para potencializar seus treinos",
       image: fitstoreImage,
       features: ["Suplementos", "Acessórios", "Vestuário fitness", "Consultoria especializada"],
-      videoUrl: "https://www.instagram.com/reel/DM0-10wvOas/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==",
-      embedUrl: "https://www.instagram.com/reel/DM0-10wvOas/embed"
+      videoUrl: "https://www.instagram.com/reel/DM0-10wvOas/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=="
     }
   ];
 
@@ -152,15 +142,15 @@ const Services = () => {
 
               {service.videoUrl && (
                 <div className="p-6 pt-0">
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    className="w-full border-primary/40 hover:bg-primary/10 text-primary font-semibold flex items-center justify-center gap-2 transition-smooth"
-                    onClick={() => setActiveVideo({ title: service.title, url: service.videoUrl!, embedUrl: service.embedUrl! })}
+                  <a
+                    href={service.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold border border-primary/40 text-primary hover:bg-primary/10 transition-smooth"
                   >
                     <Play className="h-4 w-4 fill-primary" />
-                    Ver Vídeo {service.title === "Fitstore" ? "da Fitstore" : `de ${service.title}`}
-                  </Button>
+                    Ver Vídeo {service.title === "Fitstore" ? "da Fitstore" : `de ${service.title}`} <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
                 </div>
               )}
             </Card>
@@ -168,35 +158,13 @@ const Services = () => {
         </div>
 
         {/* Video Dialog Modal */}
-        <Dialog open={!!activeVideo} onOpenChange={(open) => !open && setActiveVideo(null)}>
-          <DialogContent className="max-w-md p-4 bg-background border-border">
-            <DialogHeader className="mb-2">
-              <DialogTitle className="text-xl font-bold flex items-center gap-2">
-                <Play className="h-5 w-5 text-primary" />
-                Vídeo {activeVideo?.title}
-              </DialogTitle>
-            </DialogHeader>
-            {activeVideo && (
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-full h-[480px] rounded-lg overflow-hidden border border-border bg-black/50">
-                  <iframe
-                    src={activeVideo.embedUrl}
-                    className="w-full h-full border-0"
-                    allowFullScreen
-                    scrolling="no"
-                    title={activeVideo.title}
-                  ></iframe>
-                </div>
-                <Button
-                  className="w-full hero-gradient text-primary-foreground font-bold flex items-center justify-center gap-2"
-                  onClick={() => window.open(activeVideo.url, '_blank')}
-                >
-                  Assistir no Instagram <ExternalLink className="h-4 w-4" />
-                </Button>
-              </div>
-            )}
-          </DialogContent>
-        </Dialog>
+        <InstagramVideoModal
+          isOpen={!!activeVideo}
+          onClose={() => setActiveVideo(null)}
+          title={`Vídeo ${activeVideo?.title || ""}`}
+          videoUrl={activeVideo?.url || ""}
+          embedUrl={activeVideo?.embedUrl || ""}
+        />
 
         {/* Additional Services */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">

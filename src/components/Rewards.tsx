@@ -1,16 +1,11 @@
-import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { Gift, TrendingUp, Users, Award, Play, ExternalLink } from "lucide-react";
 import h3flashLogo from "@/assets/h3flash-logo.png";
 import prolabLogo from "@/assets/prolab-logo.png";
 import terraverdeLogo from "@/assets/terraverde-logo.png";
 
 const Rewards = () => {
-  const [activeVideo, setActiveVideo] = useState<{ title: string; url: string; embedUrl: string } | null>(null);
-
   const partners = [
     {
       name: "ProLab",
@@ -43,8 +38,7 @@ const Rewards = () => {
       title: "Clube de Recompensas",
       shortDescription: "Programa 'Tá pago!' com vantagens exclusivas",
       fullDescription: "Na Complexo Fitness, cada treino te aproxima de prêmios e vantagens exclusivas. Troque seus Complexo Coins por consultas, sessões de fisioterapia, produtos da FitStore, bebidas energéticas e muito mais.",
-      videoUrl: "https://www.instagram.com/reel/DP_1NO_gN7I/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==",
-      embedUrl: "https://www.instagram.com/reel/DP_1NO_gN7I/embed"
+      videoUrl: "https://www.instagram.com/reel/DP_1NO_gN7I/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=="
     },
     {
       icon: <TrendingUp className="h-8 w-8 text-primary" />,
@@ -57,8 +51,7 @@ const Rewards = () => {
       title: "App de Treino",
       shortDescription: "Acesso ao aplicativo de treino e acompanhamento",
       fullDescription: "Tenha acesso ao nosso aplicativo exclusivo para acompanhar seus treinos, ver sua evolução, marcar consultas e gerenciar seus Complexo Coins de forma prática e intuitiva.",
-      videoUrl: "https://www.instagram.com/reel/DEfn5U6x30f/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==",
-      embedUrl: "https://www.instagram.com/reel/DEfn5U6x30f/embed"
+      videoUrl: "https://www.instagram.com/reel/DEfn5U6x30f/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=="
     }
   ];
 
@@ -94,22 +87,15 @@ const Rewards = () => {
                   {benefit.fullDescription}
                 </p>
                 {benefit.videoUrl && (
-                  <div className="pl-12 mt-4 flex flex-wrap items-center gap-3">
-                    <Button
-                      size="sm"
-                      className="hero-gradient text-primary-foreground font-semibold flex items-center gap-2 hover:opacity-90 transition-smooth"
-                      onClick={() => setActiveVideo({ title: benefit.title, url: benefit.videoUrl!, embedUrl: benefit.embedUrl! })}
-                    >
-                      <Play className="h-4 w-4 fill-primary-foreground" />
-                      Ver Vídeo Explicativo
-                    </Button>
+                  <div className="pl-12 mt-4">
                     <a
                       href={benefit.videoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xs text-muted-foreground hover:text-primary inline-flex items-center gap-1 transition-smooth"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold hero-gradient text-primary-foreground hover:opacity-90 transition-smooth shadow-md"
                     >
-                      Abrir no Instagram <ExternalLink className="h-3 w-3" />
+                      <Play className="h-4 w-4 fill-primary-foreground" />
+                      Ver Vídeo no Instagram <ExternalLink className="h-3.5 w-3.5" />
                     </a>
                   </div>
                 )}
@@ -117,37 +103,6 @@ const Rewards = () => {
             </AccordionItem>
           ))}
         </Accordion>
-
-        {/* Video Dialog Modal */}
-        <Dialog open={!!activeVideo} onOpenChange={(open) => !open && setActiveVideo(null)}>
-          <DialogContent className="max-w-md p-4 bg-background border-border">
-            <DialogHeader className="mb-2">
-              <DialogTitle className="text-xl font-bold flex items-center gap-2">
-                <Play className="h-5 w-5 text-primary" />
-                {activeVideo?.title}
-              </DialogTitle>
-            </DialogHeader>
-            {activeVideo && (
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-full h-[480px] rounded-lg overflow-hidden border border-border bg-black/50">
-                  <iframe
-                    src={activeVideo.embedUrl}
-                    className="w-full h-full border-0"
-                    allowFullScreen
-                    scrolling="no"
-                    title={activeVideo.title}
-                  ></iframe>
-                </div>
-                <Button
-                  className="w-full hero-gradient text-primary-foreground font-bold flex items-center justify-center gap-2"
-                  onClick={() => window.open(activeVideo.url, '_blank')}
-                >
-                  Assistir no Instagram <ExternalLink className="h-4 w-4" />
-                </Button>
-              </div>
-            )}
-          </DialogContent>
-        </Dialog>
 
         {/* Partners Section */}
         <div>

@@ -14,18 +14,18 @@ const Hero = () => {
 
       {/* Hero Content */}
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-        <h1 className="mb-8 reveal">
+        <h1 className="mb-8">
           <span className="text-secondary-foreground opacity-50 block text-2xl sm:text-3xl font-body font-bold mb-4 tracking-normal uppercase">Bem-vindo à Melhor de Ubajara</span>
           <span className="text-gradient">Complexo Fitness</span>
           <br />
           <span className="text-foreground">Ubajara</span>
         </h1>
 
-        <p className="text-xl sm:text-2xl font-medium text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed reveal">
+        <p className="text-xl sm:text-2xl font-medium text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
           Equipamentos premium, profissionais dedicados e o melhor ambiente para sua transformação.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center reveal">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <Button
             size="lg"
             className="hero-gradient hover:opacity-90 transition-smooth text-lg px-12 py-7 glow-effect font-bold rounded-2xl animate-pulse-cta"

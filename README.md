@@ -3,10 +3,10 @@
 ## Project Info
 
 A modern fitness center website featuring:
-- 24h access information
-- Personal Trainer details
-- Equipment showcase
-- Pricing plans
+- Complete fitness center information & modalities
+- Personal Trainer & specialized services
+- Equipment showcase & rewards
+- Flexible pricing plans
 
 ## Technologies Used
 

@@ -24,10 +24,20 @@ const Index = () => {
           entry.target.classList.add('active');
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 });
 
-    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    const elements = document.querySelectorAll('.reveal');
+    elements.forEach((el) => observer.observe(el));
+
+    // Fallback: ensure all sections become visible if observer is delayed
+    const timer = setTimeout(() => {
+      elements.forEach((el) => el.classList.add('active'));
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -35,8 +45,8 @@ const Index = () => {
       <Navigation />
 
       <main>
-        {/* 1. Headline Institucional */}
-        <section className="reveal"><Hero /></section>
+        {/* 1. Headline Institucional (sempre visível) */}
+        <Hero />
 
         {/* 2. Problema / Dor do Visitante */}
         <section className="reveal"><Problem /></section>
