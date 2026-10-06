@@ -31,7 +31,7 @@ const Plans = () => {
       description: "Economia para quem tem rotina definida",
       category: 'mensais',
       features: [
-        "Entrada entre 9h e 14h",
+        "Entrada entre 10h e 14h",
         "Permanência livre após entrada",
         "Acesso completo à musculação",
         "Taxa R$10 para horário extra"

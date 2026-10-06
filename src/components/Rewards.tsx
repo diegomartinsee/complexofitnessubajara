@@ -1,13 +1,17 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Gift, TrendingUp, Users, Award } from "lucide-react";
+import h3flashLogo from "@/assets/h3flash-logo.png";
+import prolabLogo from "@/assets/prolab-logo.png";
+import terraverdeLogo from "@/assets/terraverde-logo.png";
 
 const Rewards = () => {
   const partners = [
     {
       name: "ProLab",
       discount: "15% de desconto",
-      description: "Exames laboratoriais (exceto toxicológico e paternidade)"
+      description: "Exames laboratoriais (exceto toxicológico e paternidade)",
+      logo: prolabLogo
     },
     {
       name: "Dr. Aristófanes Rocha",
@@ -15,14 +19,16 @@ const Rewards = () => {
       description: "Procedimentos estéticos avançados"
     },
     {
-      name: "BlackFit",
-      discount: "10% de desconto",
-      description: "Produtos na loja"
+      name: "H3 Flash",
+      discount: "Até 22% de economia na energia",
+      description: "Energia solar por assinatura — até 18% de economia em contas residenciais e até 22% em contas comerciais",
+      logo: h3flashLogo
     },
     {
       name: "Terra Verde",
       discount: "10% de desconto",
-      description: "Produtos na loja"
+      description: "Produtos da loja",
+      logo: terraverdeLogo
     }
   ];
 
@@ -37,7 +43,7 @@ const Rewards = () => {
       icon: <TrendingUp className="h-8 w-8 text-primary" />,
       title: "Descontos com Parceiros",
       shortDescription: "Benefícios em estabelecimentos parceiros",
-      fullDescription: "Desfrute de descontos exclusivos em ProLab (15% em exames laboratoriais), Dr. Aristófanes Rocha (10-15% em procedimentos estéticos), BlackFit (10% na loja) e muito mais."
+      fullDescription: "Desfrute de descontos exclusivos em ProLab (15% em exames laboratoriais), Terra Verde (10% em produtos na loja), H3 Flash (até 18% de economia em energia solar residencial e 22% comercial) e muito mais."
     },
     {
       icon: <Award className="h-8 w-8 text-primary" />,
@@ -89,13 +95,19 @@ const Rewards = () => {
             <span className="text-gradient">Parceiros</span> e Benefícios
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {partners.map((partner, index) => (
               <Card key={index} className="card-gradient border-border hover:border-primary/50 transition-smooth">
-                <CardHeader>
-                  <CardTitle className="text-xl font-heading flex items-center gap-2">
-                    <Users className="h-5 w-5 text-primary" />
-                    {partner.name}
+                <CardHeader className="text-center">
+                  <CardTitle className="font-heading flex flex-col items-center gap-2">
+                    {partner.logo ? (
+                      <img src={partner.logo} alt={partner.name} className="h-14 w-auto brightness-110" />
+                    ) : (
+                      <span className="text-xl flex items-center gap-2">
+                        <Users className="h-5 w-5 text-primary" />
+                        {partner.name}
+                      </span>
+                    )}
                   </CardTitle>
                   <div className="text-2xl font-bold text-primary mt-2">
                     {partner.discount}
